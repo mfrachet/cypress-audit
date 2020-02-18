@@ -1,4 +1,4 @@
-Run Lighthouse audit directly in your E2E test suites.
+:zap: Run Lighthouse audit directly in your E2E test suites.
 
 ![cypress audit](./example/cypress-audit.gif)
 
