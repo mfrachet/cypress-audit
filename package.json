@@ -1,0 +1,16 @@
+{
+  "name": "cypress-audit",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Marvin FRACHET <marvin.frachet@gmail.com> (https://github.com/mfrachet)",
+  "license": "MIT",
+  "dependencies": {
+    "chrome-launcher": "^0.12.0",
+    "lighthouse": "^5.6.0"
+  },
+  "scripts": {
+    "start": "yarn --cwd ./example start",
+    "e2e": "yarn --cwd ./example e2e",
+    "e2e:headless": "yarn --cwd ./example e2e:headless"
+  }
+}

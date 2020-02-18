@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - 10
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
+cache:
+  npm: true
+  directories:
+    - ~/.cache
+script:
+  - cd example
+  - npm start &
+  - npm run e2e:headless
+  - kill $(jobs -p) || true
