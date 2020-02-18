@@ -6,9 +6,7 @@
 
 My opinion is that we're using Lighthouse in the browser or in CI only to verify that **the homepage** has good scores. However, a user could open a website from another page than the home one.
 
-We also have a lot of tools to play with and one of my favorite is Cypress.
-
-With this modules, I wanted to facilitate the automation control of Lighthouse in my E2E test suite using a simple command called `cy.audit()`
+With this module, I wanted to facilitate the automation control of Lighthouse in my E2E test suite using a simple command called `cy.audit()`
 
 # Usage
 
