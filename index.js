@@ -2,17 +2,17 @@ const lighthouse = require("lighthouse");
 const chromeLauncher = require("chrome-launcher");
 
 const compare = thresholds => newValue => {
-  const results = { error: false, details: [] };
+  const errors = [];
 
   Object.keys(thresholds).forEach(key => {
     if (thresholds[key] > newValue[key]) {
-      results.error = true;
+      errors.push(
+        `${key}: ${newValue[key]} is under ${thresholds[key]} threshold`
+      );
     }
-
-    results.details.push(`${key} is ${newValue[key]}/${thresholds[key]}`);
   });
 
-  return results;
+  return errors;
 };
 
 const audit = ({ url, thresholds, opts = {}, config }) => {
