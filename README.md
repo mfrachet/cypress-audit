@@ -21,9 +21,13 @@ $ yarn add -D cypress-audit
 In your cypress/plugins/index.js, add:
 
 ```javascript
-const audit = require("cypress-audit");
+const { audit, prepareAudit } = require("cypress-audit");
 
 module.exports = (on, config) => {
+  on("before:browser:launch", (browser = {}, launchOptions) => {
+    prepareAudit(launchOptions);
+  });
+
   on("task", {
     audit
   });
