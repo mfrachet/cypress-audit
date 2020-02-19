@@ -17,28 +17,35 @@ const compare = thresholds => newValue => {
 };
 
 const audit = ({ url, thresholds, opts = {}, config }) => {
-  if (opts.chromeFlags) {
-    opts.chromeFlags.push("--headless");
-  } else {
-    opts.chromeFlags = ["--headless"];
+  if (port) {
+    opts.port = port;
+
+    return lighthouse(url, opts, config)
+      .then(results =>
+        Object.keys(results.lhr.categories).reduce(
+          (acc, curr) => ({
+            ...acc,
+            [curr]: results.lhr.categories[curr].score * 100
+          }),
+          {}
+        )
+      )
+      .then(compare(thresholds));
   }
 
-  opts.port = port;
-
-  return lighthouse(url, opts, config)
-    .then(results =>
-      Object.keys(results.lhr.categories).reduce(
-        (acc, curr) => ({
-          ...acc,
-          [curr]: results.lhr.categories[curr].score * 100
-        }),
-        {}
-      )
-    )
-    .then(compare(thresholds));
+  return null;
 };
 
 const prepareAudit = launchOptions => {
+  // Verification for electron
+  if (
+    launchOptions.preferences &&
+    launchOptions.preferences.browser &&
+    launchOptions.preferences.browser.displayName !== "Chrome"
+  ) {
+    return;
+  }
+
   const remoteDebugging = launchOptions.args.find(config =>
     config.includes("--remote-debugging-port=")
   );

@@ -1,4 +1,8 @@
 Cypress.Commands.add("audit", (thresholds, opts, config) => {
+  if (Cypress.browser.displayName !== "Chrome") {
+    return cy.log("cypress-audit", "Not a chrome browser, skipping for now");
+  }
+
   cy.url().then(url => {
     const configThresholds = Cypress.config("lighthouse");
 
