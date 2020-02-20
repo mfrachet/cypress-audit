@@ -2,7 +2,7 @@
 
 context("Homepage", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:5000");
+    cy.visit("http://localhost:3000");
   });
 
   it("should verify lighthouse scores", () => {
