@@ -17,14 +17,16 @@ Cypress.Commands.add("audit", (thresholds, opts, config) => {
       thresholds: thresholds || configThresholds,
       opts,
       config
-    }).then(errors => {
-      if (errors.length > 0) {
-        throw new Error(
-          `cypress-audit: thresholds crossed.\n\n${errors.join("\n")}`
-        );
-      }
+    }).then(({ errors, results }) => {
+      const resultStr = `\n${results.join("\n")}`;
 
-      cy.log("cypress-audit", "Everything is good");
+      cy.log("cypress-audit", resultStr).then(() => {
+        if (errors.length > 0) {
+          throw new Error(
+            `cypress-audit: thresholds crossed.\n\n${errors.join("\n")}`
+          );
+        }
+      });
     });
   });
 });

@@ -4,16 +4,21 @@ let port;
 
 const compare = thresholds => newValue => {
   const errors = [];
+  const results = [];
 
   Object.keys(thresholds).forEach(key => {
     if (thresholds[key] > newValue[key]) {
       errors.push(
         `${key}: ${newValue[key]} is under ${thresholds[key]} threshold`
       );
+    } else {
+      results.push(
+        `${key}: ${newValue[key]} is >= ${thresholds[key]} threshold`
+      );
     }
   });
 
-  return errors;
+  return { errors, results };
 };
 
 const audit = ({ url, thresholds, opts = {}, config }) => {
