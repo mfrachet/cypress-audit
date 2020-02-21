@@ -46,6 +46,18 @@ You can now use the `cy.audit()` command in your tests:
 
 ```javascript
 it("should verify the lighthouse scores", function() {
+  cy.audit();
+});
+```
+
+It will take the `100` score as a threshold for every metrics when `cy.audit()` is called without arguments.
+
+### Thresholds per use case
+
+It's possible to use `cy.audit(thresholds)` where thresholds is an object owning the different limit for your current test to pass:
+
+```javascript
+it("should verify the lighthouse scores", function() {
   cy.audit({
     performance: 85,
     accessibility: 100,
@@ -56,9 +68,9 @@ it("should verify the lighthouse scores", function() {
 });
 ```
 
-_NB: none of the keys are required, you can put the keys you want and the module will make the assertions based on them._
+### Globally set thresholds
 
-You can also define the default thresholds in your `cypress.json` file. However, it will be replaced by the `cy.audit` argument if provided:
+You can also set the tresholds in your `cypress.json` config file:
 
 ```json
 // cypress.json
@@ -72,6 +84,8 @@ You can also define the default thresholds in your `cypress.json` file. However,
   }
 }
 ```
+
+_NB: the local (per use-case) threshold takes over the global one._
 
 ## Example
 
