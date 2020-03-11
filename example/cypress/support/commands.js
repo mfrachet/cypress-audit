@@ -24,3 +24,8 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import "../../../commands";
+
+Cypress.Commands.add("login", () => {
+  window.localStorage.setItem("logged", true);
+  cy.visit("/dashboard");
+});

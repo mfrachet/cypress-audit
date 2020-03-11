@@ -6,9 +6,17 @@ const defaultThresholds = {
   pwa: 100
 };
 
+const VALID_BROWSERS = {
+  Chrome: true,
+  Canary: true
+};
+
 Cypress.Commands.add("audit", (thresholds, opts, config) => {
-  if (Cypress.browser.displayName !== "Chrome") {
-    return cy.log("cypress-audit", "Not a chrome browser, skipping for now");
+  if (!VALID_BROWSERS[Cypress.browser.displayName]) {
+    return cy.log(
+      "cypress-audit",
+      `${Cypress.browser.displayName} is not supported. Skipping...`
+    );
   }
 
   cy.url().then(url => {
