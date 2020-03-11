@@ -25,7 +25,7 @@ const audit = ({ url, thresholds, opts = {}, config }) => {
   if (port) {
     opts.port = port;
 
-    return lighthouse(url, opts, config)
+    return lighthouse(url, { disableStorageReset: true, ...opts }, config)
       .then(results =>
         Object.keys(results.lhr.categories).reduce(
           (acc, curr) => ({
@@ -42,20 +42,13 @@ const audit = ({ url, thresholds, opts = {}, config }) => {
 };
 
 const prepareAudit = launchOptions => {
-  // Verification for electron
-  if (
-    launchOptions.preferences &&
-    launchOptions.preferences.browser &&
-    launchOptions.preferences.browser.displayName !== "Chrome"
-  ) {
-    return;
-  }
-
   const remoteDebugging = launchOptions.args.find(config =>
     config.includes("--remote-debugging-port=")
   );
 
-  port = remoteDebugging.split("=")[1];
+  if (remoteDebugging) {
+    port = remoteDebugging.split("=")[1];
+  }
 };
 
 module.exports = { audit, prepareAudit };
