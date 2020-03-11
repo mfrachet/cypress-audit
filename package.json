@@ -1,6 +1,6 @@
 {
   "name": "cypress-audit",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "index.js",
   "author": "Marvin FRACHET <marvin.frachet@gmail.com> (https://github.com/mfrachet)",
   "license": "MIT",

@@ -90,6 +90,8 @@ _NB: the local (per use-case) threshold takes over the global one._
 ## Example
 
 The [example](./example) folder of the projects owns a `create-react-app` application with an associated cypress test running lighthouse.
+In this tests, there's also a "false" way to authenticate users using cookies.
+
 You can run it by:
 
 - Cloning this repo (`$ git clone https://github.com/mfrachet/cypress-audit`)
