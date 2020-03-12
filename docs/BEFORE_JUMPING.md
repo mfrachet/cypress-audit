@@ -19,17 +19,19 @@ Let's clear this command and run `$ yarn build` at the root of the project. Afte
 To run this real application, I'm going to use the [serve](https://github.com/zeit/serve) package (there are other, it's not mandatory, we just want to serve our static assets from a server). Run the following:
 
 ```sh
-$ yarn global serve
+$ yarn global add serve
 
 # For the following step, make sure you're inside the `./build` folder
 # This will serve your production application on the :3000 port
-$ yarn serve -l 3000
+$ serve -l 3000
 ```
 
-You should now run your audit testing against this application. If you don't run your test against a folder called `cypress` and that you rely on a specific project (like me) called `audit` (or anything else), you have to run cypress as:
+You should now run your audit testing against this application.
+
+If you don't have a default `cypress` project then you have to run cypress like following:
 
 ```shell
-$ cypress open --project audit
+$ cypress open --project audit # where audit is the cypress project name
 ```
 
 Yan can hopefully automate this in [TravisCI](https://travis-ci.org/) or [CircleCI](https://circleci.com/)
