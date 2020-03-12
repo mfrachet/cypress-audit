@@ -1,8 +1,8 @@
-<div style="text-align: center;">
+<p align="center">
 <img src="./example/cypress.png"/>
 
 <img src="./example/lighthouse.png"/>
-</div>
+</p>
 
 <h5 align="center">
 Run Lighthouse audits directly in your Cypress E2E test suites.
