@@ -25,4 +25,4 @@ $ yarn e2e:headless # to run the tests headlessy, in the terminal
 
 Here's what you can expect from the library:
 
-![cypress-audit in action](./example/cypress-audit.gif)
+![cypress-audit in action](./cypress-audit.gif)
