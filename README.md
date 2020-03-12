@@ -9,6 +9,8 @@ Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> 
 
 ---
 
+[![Build Status](https://travis-ci.org/mfrachet/cypress-audit.svg?branch=master)](https://travis-ci.org/mfrachet/cypress-audit) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 [Why cypress-audit](#why-cypress-audit) · [Usage](#usage) · [Examples](#examples)
 
 ## Why cypress-audit?
