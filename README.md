@@ -1,4 +1,16 @@
-:zap: Run Lighthouse audit directly in your E2E test suites.
+<div style="text-align: center;">
+<img src="./example/cypress.png"/>
+
+<img src="./example/lighthouse.png"/>
+</div>
+
+<h5 align="center">
+Run Lighthouse audits directly in your Cypress E2E test suites.
+</h5>
+
+---
+
+[Why cypress-audit](#why-cypress-audit) · [Usage](#usage) · [Examples](#examples)
 
 ## Why cypress-audit?
 
@@ -132,3 +144,7 @@ $ yarn start
 $ yarn e2e # to open Cypress UI
 $ yarn e2e:headless # to run the tests headlessy, in the terminal
 ```
+
+Here's what you can expect from the library:
+
+![cypress-audit in action](./example/cypress-audit.gif)
