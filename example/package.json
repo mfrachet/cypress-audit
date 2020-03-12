@@ -16,10 +16,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "e2e": "cypress open",
-    "e2e:headless": "cypress run --headless --browser chrome",
-    "audit:console": "yarn build && concurrently \"serve -s build -l 3000\" \"yarn e2e:headless\"",
-    "audit:ui": "yarn build && concurrently \"serve -s build -l 3000\" \"yarn e2e\""
+    "e2e:audit": "cypress open --project audit",
+    "e2e:audit:headless": "cypress run --project audit --headless --browser chrome",
+    "audit:console": "yarn build && concurrently \"serve -s build -l 3000\" \"yarn e2e:audit:headless\"",
+    "audit:ui": "yarn build && concurrently \"serve -s build -l 3000\" \"yarn e2e:audit\""
   },
   "eslintConfig": {
     "extends": "react-app"

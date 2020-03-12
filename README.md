@@ -11,19 +11,7 @@ Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> 
 
 [![Build Status](https://travis-ci.org/mfrachet/cypress-audit.svg?branch=master)](https://travis-ci.org/mfrachet/cypress-audit) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[Why cypress-audit](#why-cypress-audit) · [Usage](#usage) · [Examples](#examples)
-
-## Why cypress-audit?
-
-Lighthouse is an amazing tool that allows to verify some metrics of a specific webpage. It measures _performances_, _accessibility_, _best practices_, _seo_ and _pwa_ and provides a score between 0 and 100 (100 being the maximum) for each of them. These metrics are subjective but generally useful to verify that we don't have too much regressions while modifying our applications.
-
-The main problem that I see with Lighthouse is that we tend to use it to only verify the homepage of an application. It's easy to take for granted that an application is in good health testing only the main page of an app.
-
-This modules aims to provide an easy way to verify lighthouse score as part of your E2E flows:
-
-- you write your assumptions in JavaScript
-- your verify the scores based on the _current_ Cypress page (the result of `cy.url()`)
-- you can take advantage of your custom Cypress commands (like authentication :rocket:)
+[Why cypress-audit](./docs/WHY.md) · [Before jumping in](./docs/BEFORE_JUMPING.md) · [Usage](#usage) · [Examples](./example)
 
 ## Usage
 
@@ -120,32 +108,3 @@ While I would recommend to make per-test assumptions, it's possible to define ge
 ```
 
 _Note: This metrics are overriden by the per-tests one._
-
-## Examples
-
-The [example](./example) folder of this projects owns some examples that you can run or look into. To get them working locally:
-
-- Get the project
-
-```shell
-$ git clone https://github.com/mfrachet/cypress-audit
-$ cd cypress-audit
-$ yarn # or `npm install`
-```
-
-- Start the application
-
-```shell
-$ yarn start
-```
-
-- Run the tests (in another terminal)
-
-```shell
-$ yarn e2e # to open Cypress UI
-$ yarn e2e:headless # to run the tests headlessy, in the terminal
-```
-
-Here's what you can expect from the library:
-
-![cypress-audit in action](./example/cypress-audit.gif)
