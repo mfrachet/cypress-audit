@@ -13,5 +13,5 @@ script:
   - cd example
   - npm install
   - npm start &
-  - npm run e2e:headless
+  - npm run e2e:audit:headless
   - kill $(jobs -p) || true
