@@ -10,10 +10,11 @@ $ cd cypress-audit
 $ yarn # or `npm install`
 ```
 
-- Start the application
+- Start the application in production mode
 
 ```shell
-$ yarn start
+$ yarn build
+$ yarn serve -l 3000
 ```
 
 - Run the tests (in another terminal)
