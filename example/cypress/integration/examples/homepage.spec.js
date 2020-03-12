@@ -1,13 +1,29 @@
 /// <reference types="cypress" />
 
-context("Homepage", () => {
+context("Main page", () => {
   beforeEach(() => {
-    cy.login();
+    cy.visit("/");
+  });
+
+  it("should verify the score of the main page", () => {
+    cy.audit({
+      performance: 50,
+      accessibility: 50,
+      "best-practices": 50,
+      seo: 50,
+      pwa: 50
+    });
   });
 
   it("should verify lighthouse scores", () => {
-    // No arguments passed,
-    //  will assert on 100 score for every metric
-    cy.audit();
+    cy.login();
+
+    cy.audit({
+      performance: 50,
+      accessibility: 50,
+      "best-practices": 50,
+      seo: 50,
+      pwa: 50
+    });
   });
 });
