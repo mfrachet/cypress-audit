@@ -34,4 +34,4 @@ If you don't have a default `cypress` project then you have to run cypress like 
 $ cypress open --project audit # where audit is the cypress project name
 ```
 
-Yan can hopefully automate this in [TravisCI](https://travis-ci.org/) or [CircleCI](https://circleci.com/)
+You can hopefully automate this in [TravisCI](https://travis-ci.org/) or [CircleCI](https://circleci.com/) or any other CI system.

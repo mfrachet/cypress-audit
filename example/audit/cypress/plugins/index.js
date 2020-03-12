@@ -15,7 +15,7 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-const { audit, prepareAudit } = require("../../../index");
+const { audit, prepareAudit } = require("../../../../index");
 
 module.exports = (on, config) => {
   on("before:browser:launch", (browser = {}, launchOptions) => {

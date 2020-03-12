@@ -19,8 +19,8 @@ $ yarn start
 - Run the tests (in another terminal)
 
 ```shell
-$ yarn e2e # to open Cypress UI
-$ yarn e2e:headless # to run the tests headlessy, in the terminal
+$ yarn e2e:audit # to open Cypress UI and play with the audit project
+$ yarn e2e:audit:headless # to run the tests headlessy, in the terminal on the audit project
 ```
 
 Here's what you can expect from the library:
