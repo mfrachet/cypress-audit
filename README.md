@@ -1,24 +1,32 @@
 :zap: Run Lighthouse audit directly in your E2E test suites.
 
-![cypress audit](./example/cypress-audit.gif)
+## Why cypress-audit?
 
-## Why?
+[Lighthouse](https://developers.google.com/web/tools/lighthouse) is an amazing tool that allows to verify some metrics of a specific webpage. It measures _performances_, _accessibility_, _best practices_, _seo_ and _pwa_ and provides a score between 0 and 100 (100 being the maximum) for each of them. These metrics are subjective but generally useful to verify that we don't have too much regressions while modifying our applications.
 
-My opinion is that we're using Lighthouse in the browser or in CI only to verify that **the homepage** has good scores. However, a user could open a website from another page than the home one.
+The main problem that I see with Lighthouse is that we tend to use it to only verify the homepage of an application. It's easy to take for granted that an application is in good health testing only the main page of an app.
 
-With this module, I wanted to facilitate the automation control of Lighthouse in my E2E test suite using a simple command called `cy.audit()`
+This modules aims to provide an easy way to verify lighthouse score as part of your E2E flows:
 
-# Usage
+- you write your assumptions in JavaScript
+- your verify the scores based on the _current_ Cypress page (the result of `cy.url()`)
+- you can take advantage of your custom Cypress commands (like authentication :rocket:)
 
-## Installation
+## Usage
 
-In your favorite terminal:
+### Installation
 
-```
+To make `cypress-audit` working in your project, you have to follow these **3 steps**:
+
+- In your favorite terminal:
+
+```sh
 $ yarn add -D cypress-audit
+# or
+$ npm install --save-dev cypress-audit
 ```
 
-In your cypress/plugins/index.js, add:
+- In the `cypress/plugins/index.js` file:
 
 ```javascript
 const { audit, prepareAudit } = require("cypress-audit");
@@ -34,15 +42,15 @@ module.exports = (on, config) => {
 };
 ```
 
-In your cypress/support/commands.js, add:
+- In the `cypress/support/commands.js` file:
 
 ```javascript
 import "cypress-audit/commands";
 ```
 
-## In your code
+### In your code
 
-You can now use the `cy.audit()` command in your tests:
+After completing the [Installation](#installation) section, you can now use the `cy.audit` command inside your tests.
 
 ```javascript
 it("should verify the lighthouse scores", function() {
@@ -50,14 +58,14 @@ it("should verify the lighthouse scores", function() {
 });
 ```
 
-It will take the `100` score as a threshold for every metrics when `cy.audit()` is called without arguments.
+By default, if you don't provide any argument to the `cy.audit` command, you will verify each metric against their maximum value: each metric should have a score of `100` or the test will fail.
 
-### Thresholds per use case
+#### Thresholds per tests
 
-It's possible to use `cy.audit(thresholds)` where thresholds is an object owning the different limit for your current test to pass:
+You can make assumptions on the different metrics by passing an object as argument to the `cy.audit` command:
 
 ```javascript
-it("should verify the lighthouse scores", function() {
+it("should verify the lighthouse scores with thresholds", function() {
   cy.audit({
     performance: 85,
     accessibility: 100,
@@ -68,12 +76,25 @@ it("should verify the lighthouse scores", function() {
 });
 ```
 
-### Globally set thresholds
+Running this tests, if the Lighthouse analysis returns scores that are under the one set in arguments, the test will fail.
 
-You can also set the tresholds in your `cypress.json` config file:
+You can also make assumptions only on certain metrics. For example, the following test will **only** verify the "correctness" of the `performance` metric:
+
+```javascript
+it("should verify the lighthouse scores ONLY for performance", function() {
+  cy.audit({
+    performance: 85
+  });
+});
+```
+
+This test will fail only when the `performance` metric provided by Lighthouse will be under `85`.
+
+#### Globally set thresholds
+
+While I would recommend to make per-test assumptions, it's possible to define general metrics inside the `cypress.json` file as following:
 
 ```json
-// cypress.json
 {
   "lighthouse": {
     "performance": 85,
@@ -85,15 +106,29 @@ You can also set the tresholds in your `cypress.json` config file:
 }
 ```
 
-_NB: the local (per use-case) threshold takes over the global one._
+_Note: This metrics are overriden by the per-tests one._
 
-## Example
+## Examples
 
-The [example](./example) folder of the projects owns a `create-react-app` application with an associated cypress test running lighthouse.
-In this tests, there's also a "false" way to authenticate users using cookies.
+The [example](./example) folder of this projects owns some examples that you can run or look into. To get them working locally:
 
-You can run it by:
+- Get the project
 
-- Cloning this repo (`$ git clone https://github.com/mfrachet/cypress-audit`)
-- Start the application (`$ yarn start`)
-- Run the E2E test suite (`$ yarn e2e` for UI and `$ yarn e2e:headless` for headless)
+```shell
+$ git clone https://github.com/mfrachet/cypress-audit
+$ cd cypress-audit
+$ yarn # or `npm install`
+```
+
+- Start the application
+
+```shell
+$ yarn start
+```
+
+- Run the tests (in another terminal)
+
+```shell
+$ yarn e2e # to open Cypress UI
+$ yarn e2e:headless # to run the tests headlessy, in the terminal
+```
