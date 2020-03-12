@@ -1,11 +1,11 @@
-<p align="center">
+<p align="center"></p>
 <img src="./example/cypress.png"/>
 
 <img src="./example/lighthouse.png"/>
 </p>
 
 <h5 align="center">
-Run Lighthouse audits directly in your Cypress E2E test suites.
+Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> audits directly in your <a href="https://cypress.io/">Cypress</a> E2E test suites
 </h5>
 
 ---
@@ -14,7 +14,7 @@ Run Lighthouse audits directly in your Cypress E2E test suites.
 
 ## Why cypress-audit?
 
-[Lighthouse](https://developers.google.com/web/tools/lighthouse) is an amazing tool that allows to verify some metrics of a specific webpage. It measures _performances_, _accessibility_, _best practices_, _seo_ and _pwa_ and provides a score between 0 and 100 (100 being the maximum) for each of them. These metrics are subjective but generally useful to verify that we don't have too much regressions while modifying our applications.
+Lighthouse is an amazing tool that allows to verify some metrics of a specific webpage. It measures _performances_, _accessibility_, _best practices_, _seo_ and _pwa_ and provides a score between 0 and 100 (100 being the maximum) for each of them. These metrics are subjective but generally useful to verify that we don't have too much regressions while modifying our applications.
 
 The main problem that I see with Lighthouse is that we tend to use it to only verify the homepage of an application. It's easy to take for granted that an application is in good health testing only the main page of an app.
 
@@ -62,7 +62,7 @@ import "cypress-audit/commands";
 
 ### In your code
 
-After completing the [Installation](#installation) section, you can now use the `cy.audit` command inside your tests.
+After completing the [Installation](#installation) section, you are now able to use the `cy.audit` command inside your tests.
 
 ```javascript
 it("should verify the lighthouse scores", function() {
@@ -70,7 +70,7 @@ it("should verify the lighthouse scores", function() {
 });
 ```
 
-By default, if you don't provide any argument to the `cy.audit` command, you will verify each metric against their maximum value: each metric should have a score of `100` or the test will fail.
+If you don't provide any argument to the `cy.audit` command, the test will fail if at least one of your metrics is under `100`.
 
 #### Thresholds per tests
 
@@ -88,7 +88,7 @@ it("should verify the lighthouse scores with thresholds", function() {
 });
 ```
 
-Running this tests, if the Lighthouse analysis returns scores that are under the one set in arguments, the test will fail.
+If the Lighthouse analysis returns scores that are under the one set in arguments, the test will fail.
 
 You can also make assumptions only on certain metrics. For example, the following test will **only** verify the "correctness" of the `performance` metric:
 
