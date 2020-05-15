@@ -1,10 +1,5 @@
-<p align="center">
-<img src="./example/cypress.png"/>
-<img src="./example/lighthouse.png"/>
-</p>
-
 <h5 align="center">
-Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> audits directly in your <a href="https://cypress.io/">Cypress</a> E2E test suites
+Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> and <a href="https://github.com/pa11y/pa11y">Pa11y</a> audits directly in your <a href="https://cypress.io/">Cypress</a> E2E test suites
 </h5>
 
 ---
@@ -30,7 +25,7 @@ $ npm install --save-dev cypress-audit
 - In the `cypress/plugins/index.js` file:
 
 ```javascript
-const { audit, prepareAudit } = require("cypress-audit");
+const { lighthouse, pa11y, prepareAudit } = require("cypress-audit");
 
 module.exports = (on, config) => {
   on("before:browser:launch", (browser = {}, launchOptions) => {
@@ -38,7 +33,8 @@ module.exports = (on, config) => {
   });
 
   on("task", {
-    audit
+    lighthouse,
+    pa11y,
   });
 };
 ```
@@ -51,28 +47,35 @@ import "cypress-audit/commands";
 
 ### In your code
 
-After completing the [Installation](#installation) section, you are now able to use the `cy.audit` command inside your tests.
+After completing the [Installation](#installation) section, you are now able to use the `cy.audit` and `cy.pa11y` commands inside your tests.
 
 ```javascript
-it("should verify the lighthouse scores", function() {
-  cy.audit();
+it("should pass the audits", function () {
+  cy.lighthouse();
+  cy.pa11y();
 });
 ```
 
+#### cy.pa11y
+
+You can call `cy.pa11Y(opts)` with `opts` being any kind of [the pa11y options](https://github.com/pa11y/pa11y#configuration).
+
+#### cy.lighthouse
+
 If you don't provide any argument to the `cy.audit` command, the test will fail if at least one of your metrics is under `100`.
 
-#### Thresholds per tests
+##### Thresholds per tests
 
 You can make assumptions on the different metrics by passing an object as argument to the `cy.audit` command:
 
 ```javascript
-it("should verify the lighthouse scores with thresholds", function() {
+it("should verify the lighthouse scores with thresholds", function () {
   cy.audit({
     performance: 85,
     accessibility: 100,
     "best-practices": 85,
     seo: 85,
-    pwa: 100
+    pwa: 100,
   });
 });
 ```
@@ -82,16 +85,16 @@ If the Lighthouse analysis returns scores that are under the one set in argument
 You can also make assumptions only on certain metrics. For example, the following test will **only** verify the "correctness" of the `performance` metric:
 
 ```javascript
-it("should verify the lighthouse scores ONLY for performance", function() {
+it("should verify the lighthouse scores ONLY for performance", function () {
   cy.audit({
-    performance: 85
+    performance: 85,
   });
 });
 ```
 
 This test will fail only when the `performance` metric provided by Lighthouse will be under `85`.
 
-#### Globally set thresholds
+##### Globally set thresholds
 
 While I would recommend to make per-test assumptions, it's possible to define general metrics inside the `cypress.json` file as following:
 
@@ -107,4 +110,4 @@ While I would recommend to make per-test assumptions, it's possible to define ge
 }
 ```
 
-_Note: This metrics are overriden by the per-tests one._
+_Note: These metrics are override by the per-tests one._
