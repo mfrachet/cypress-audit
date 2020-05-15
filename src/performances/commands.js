@@ -11,7 +11,7 @@ const VALID_BROWSERS = {
   Canary: true,
 };
 
-Cypress.Commands.add("audit", (thresholds, opts, config) => {
+Cypress.Commands.add("lighthouse", (thresholds, opts, config) => {
   if (!VALID_BROWSERS[Cypress.browser.displayName]) {
     return cy.log(
       "cypress-audit",
@@ -29,7 +29,7 @@ Cypress.Commands.add("audit", (thresholds, opts, config) => {
       );
     }
 
-    cy.task("audit", {
+    cy.task("lighthouse", {
       url,
       thresholds: thresholds || configThresholds || defaultThresholds,
       opts,

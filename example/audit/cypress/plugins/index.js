@@ -15,7 +15,7 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-const { audit, prepareAudit } = require("../../../../index");
+const { lighthouse, pa11y, prepareAudit } = require("../../../../index");
 
 module.exports = (on, config) => {
   on("before:browser:launch", (browser = {}, launchOptions) => {
@@ -23,6 +23,7 @@ module.exports = (on, config) => {
   });
 
   on("task", {
-    audit
+    lighthouse,
+    pa11y,
   });
 };

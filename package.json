@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "yarn --cwd ./example start",
-    "e2e": "yarn --cwd ./example e2e",
+    "e2e": "yarn --cwd ./example e2e:audit",
     "e2e:headless": "yarn --cwd ./example e2e:audit:headless"
   }
 }
