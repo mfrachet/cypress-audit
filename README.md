@@ -56,4 +56,4 @@ it("should pass the audits", function () {
 });
 ```
 
-[You can now check the APIs for the `cy.lighthouse` and `cy.pa11y` commands here.](./docs/README)
+[You can now check the APIs for the `cy.lighthouse` and `cy.pa11y` commands here.](./docs/README.md)
