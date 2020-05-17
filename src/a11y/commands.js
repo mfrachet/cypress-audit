@@ -16,7 +16,7 @@ const groupIssues = (issues) => {
       }
       return allIssues;
     },
-    {}
+    {},
   );
 
   const groupedIssues = [];
@@ -34,7 +34,7 @@ const formatIssues = (issues) => {
   return issues
     .map(
       (issue) =>
-        `Issue: ${issue.issueId}, # of occurrences: ${issue.occurrences}.\n- ${issue.description}\n- ${issue.link}`
+        `Issue: ${issue.issueId}, # of occurrences: ${issue.occurrences}.\n- ${issue.description}\n- ${issue.link}`,
     )
     .join(`\n\n`);
 };
@@ -46,10 +46,9 @@ Cypress.Commands.add("pa11y", (opts) => {
       if (issues.length > ERROR_NUMBER_THRESHOLD) {
         const groupedIssues = groupIssues(issues);
 
-        const title =
-          issues.length === 1
-            ? `${issues.length} accessibility violation was found`
-            : `${issues.length} accessibility violations were found`;
+        const title = issues.length === 1
+          ? `cy.pa11y - ${issues.length} accessibility violation was found`
+          : `cy.pa11y - ${issues.length} accessibility violations were found`;
 
         const formattedIssues = formatIssues(groupedIssues);
 

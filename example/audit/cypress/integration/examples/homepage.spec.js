@@ -6,21 +6,20 @@ context("Main page", () => {
   });
 
   it("should verify the score of the main page", () => {
-    cy.pa11y();
     cy.lighthouse({
-      performance: 50,
-      accessibility: 50,
+      performance: 100,
+      accessibility: 100,
       "best-practices": 50,
       seo: 50,
       pwa: 50,
     });
+
+    cy.pa11y();
   });
 
   it("should verify lighthouse scores", () => {
     cy.login();
 
-    cy.pa11y();
-
     cy.lighthouse({
       performance: 50,
       accessibility: 50,
@@ -28,5 +27,7 @@ context("Main page", () => {
       seo: 50,
       pwa: 50,
     });
+
+    cy.pa11y();
   });
 });
