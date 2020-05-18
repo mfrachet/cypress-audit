@@ -49,3 +49,23 @@ While I would recommend to make per-test assumptions, it's possible to define ge
 ```
 
 _Note: These metrics are override by the per-tests one._
+
+### Passing options and config to Lighthouse directly
+
+You can also pass any argument directly to the Lighthouse module using the second and third options of the command:
+
+```js
+const thresholds = {
+  /* ... */
+};
+
+const lighthouseOptions = {
+  /* ... your lighthouse options */
+};
+
+const lighthouseConfig = {
+  /* ... your lighthouse configs */
+};
+
+cy.lighthouse(thresholds, lighthouseOptions, lighthouseConfig);
+```

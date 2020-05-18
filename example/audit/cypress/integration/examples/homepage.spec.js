@@ -1,13 +1,12 @@
 /// <reference types="cypress" />
 
-context("Main page", () => {
+context("The App", () => {
   beforeEach(() => {
     cy.visit("/");
   });
 
-  it("should verify the score of the main page", () => {
+  it("audits the home page", () => {
     cy.lighthouse({
-      performance: 100,
       accessibility: 100,
       "best-practices": 50,
       seo: 50,
@@ -17,7 +16,7 @@ context("Main page", () => {
     cy.pa11y();
   });
 
-  it("should verify lighthouse scores", () => {
+  it("audits the authenticated page", () => {
     cy.login();
 
     cy.lighthouse({

@@ -28,6 +28,10 @@ const lighthouse = ({ url, thresholds, opts = {}, config }) => {
   if (port) {
     opts.port = port;
 
+    if (!opts.onlyCategories) {
+      opts.onlyCategories = Object.keys(thresholds);
+    }
+
     return lighthouseLib(url, { disableStorageReset: true, ...opts }, config)
       .then((results) =>
         Object.keys(results.lhr.categories).reduce(
