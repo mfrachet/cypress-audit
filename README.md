@@ -6,6 +6,7 @@ Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> 
 
 [![Build Status](https://travis-ci.org/mfrachet/cypress-audit.svg?branch=master)](https://travis-ci.org/mfrachet/cypress-audit) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+- [Why cypress-audit?](#why-cypress-audit)
 - [Usage](#usage)
   - [Installation](#installation)
   - [In your code](#in-your-code)
@@ -16,6 +17,18 @@ Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> 
     - [Globally set thresholds](#globally-set-thresholds)
     - [Passing options and config to Lighthouse directly](#passing-options-and-config-to-lighthouse-directly)
   - [Accessing the raw reports](#accessing-the-raw-reports)
+
+## Why cypress-audit?
+
+The tools we can use nowadays to verify the quality of our applications are awesome. They help us get a huge amount of confidence about what we ship in production and alert us when some kind of regression occurs.
+
+- [Cypress](https://cypress.io/) has made business oriented workflow verification super easy and fun
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse) has provided incredible tools to verify the performance of an application
+- [Pa11y](https://pa11y.org/) provides multiple tool to control the accessibility state of our applications in a wonderful way
+
+The problem is that they run in their own context and with their own internal tricks for authentication and page browsing.
+
+The idea of `cypress-audit` is to unify all of this by providing some [Cypress Custom Commands](https://docs.cypress.io/api/cypress-api/custom-commands.html) so that you can use these tools **directly inside your Cypress tests, close to your custom shortcut for navigation and login.**
 
 ## Usage
 
