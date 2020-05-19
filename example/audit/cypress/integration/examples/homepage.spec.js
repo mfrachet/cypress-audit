@@ -1,25 +1,23 @@
 /// <reference types="cypress" />
 
-context("Main page", () => {
+context("The App", () => {
   beforeEach(() => {
     cy.visit("/");
   });
 
-  it("should verify the score of the main page", () => {
-    cy.pa11y();
+  it("audits the home page", () => {
     cy.lighthouse({
-      performance: 50,
-      accessibility: 50,
+      accessibility: 100,
       "best-practices": 50,
       seo: 50,
       pwa: 50,
     });
+
+    cy.pa11y();
   });
 
-  it("should verify lighthouse scores", () => {
+  it("audits the authenticated page", () => {
     cy.login();
-
-    cy.pa11y();
 
     cy.lighthouse({
       performance: 50,
@@ -28,5 +26,7 @@ context("Main page", () => {
       seo: 50,
       pwa: 50,
     });
+
+    cy.pa11y();
   });
 });
