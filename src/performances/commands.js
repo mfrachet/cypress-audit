@@ -8,6 +8,7 @@ const defaultThresholds = {
 
 const VALID_BROWSERS = {
   Chrome: true,
+  Chromium: true,
   Canary: true,
 };
 
