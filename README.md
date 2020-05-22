@@ -183,7 +183,7 @@ module.exports = (on, config) => {
   on("task", {
     lighthouse: lighthouse(lighthouseReport => {
       console.log(lighthouseReport) // raw lighthouse report
-    },
+    }),
     pa11y: pa11y(pa11yReport => {
       console.log(pa11yReport) // raw pa11y report
     }),
