@@ -78,8 +78,6 @@ it("should pass the audits", function () {
 });
 ```
 
-[You can now check the APIs for the `cy.lighthouse` and `cy.pa11y` commands here.](./docs/README.md)
-
 ### cy.pa11y()
 
 ![A Pa11y record showing some test failing on color contrast, landmark, heading and regions.](./docs/pally.png)
@@ -181,11 +179,11 @@ module.exports = (on, config) => {
   });
 
   on("task", {
-    lighthouse: lighthouse(lighthouseReport => {
-      console.log(lighthouseReport) // raw lighthouse report
+    lighthouse: lighthouse((lighthouseReport) => {
+      console.log(lighthouseReport); // raw lighthouse report
     }),
-    pa11y: pa11y(pa11yReport => {
-      console.log(pa11yReport) // raw pa11y report
+    pa11y: pa11y((pa11yReport) => {
+      console.log(pa11yReport); // raw pa11y report
     }),
   });
 };
