@@ -55,17 +55,19 @@ Cypress.Commands.add("pa11y", (opts) => {
 
   cy.url()
     .then((url) => cy.task("pa11y", { url, opts }))
-    .then((issues) => {
-      if (issues.length > ERROR_NUMBER_THRESHOLD) {
-        const groupedIssues = groupIssues(issues);
+    .then((results) => {
+      const { errorThreshold = ERROR_NUMBER_THRESHOLD } = opts;
+      const { issues = [] } = results;
+      const groupedIssues = groupIssues(issues);
 
-        const title =
-          issues.length === 1
-            ? `cy.pa11y - ${issues.length} accessibility violation was found`
-            : `cy.pa11y - ${issues.length} accessibility violations were found`;
+      const title =
+        issues.length === 1
+          ? `cy.pa11y - ${issues.length} accessibility violation was found`
+          : `cy.pa11y - ${issues.length} accessibility violations were found`;
+      
+      const formattedIssues = formatIssues(groupedIssues);
 
-        const formattedIssues = formatIssues(groupedIssues);
-
+      if (issues.length > errorThreshold) {
         throw new Error(`${title}\n\n${formattedIssues}`);
       }
     });
