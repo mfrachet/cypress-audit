@@ -4,7 +4,7 @@ const path = require('path');
 /**
  * Removes the protocol and replaces all occurences of `/` and `:` with `-`.
  * 
- * @param {*} pageUrl the url to normalize
+ * @param {string} pageUrl the url to normalize
  * @returns {string} the normalized url
  */
 const normalizePageUrl = (pageUrl = '') => (
@@ -20,7 +20,7 @@ const normalizePageUrl = (pageUrl = '') => (
 /**
  * Computes a default path for pa11y reports from the audited page URL.
  * 
- * @param {*} pageUrl the audited page URL
+ * @param {string} pageUrl the audited page URL
  * @returns a path to save the report
  */
 const computeDefaultReportPath = (pageUrl = '') => `a11y-report/${normalizePageUrl(pageUrl)}`; 
@@ -31,7 +31,7 @@ const computeDefaultReportPath = (pageUrl = '') => `a11y-report/${normalizePageU
  * page URL.
  * 
  * @param {*} report the pa11y report
- * @param {*} opts 
+ * @param {{ path: string }} opts 
  */
 const writePa11yReportToFile = (report, opts) => {
     const { reportPath = computeDefaultReportPath(report.pageUrl) } = opts;

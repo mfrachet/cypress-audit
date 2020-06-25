@@ -11,15 +11,18 @@ const pa11y = (callback) => ({ url, opts }) => {
     .then((browser) =>
       pa11yLib(url, { browser, runners: ["axe"], ...pa11yOpts }).then((results) => {
 
+        const a11yauditPassed = (pa11yOpts.errorThreshold || 0) >= results.issues.length;
+        const report = { passed: a11yauditPassed, ...results };
+
         if(reportOpts) {
-          writePa11yReportToFile(results, reportOpts);
+          writePa11yReportToFile(report, reportOpts);
         }
 
         if (callback) {
-          callback(results);
+          callback(report);
         }
 
-        return results;
+        return report;
       })
     );
 };
