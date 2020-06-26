@@ -2,13 +2,14 @@ const fs = require('fs');
 const path = require('path');
 
 /**
+ * Computes a default path for pa11y reports from the audited page URL.
  * Removes the protocol and replaces all occurences of `/` and `:` with `-`.
  * 
  * @param {string} pageUrl the url to normalize
  * @returns {string} the normalized url
  */
-const normalizePageUrl = (pageUrl = '') => (
-    `${pageUrl
+const computeDefaultReportPath = (pageUrl = '') => (
+    `a11y-report/${pageUrl
         // remove protocol
         .replace(/http(s)?:\/\//, '')
         // replace / and : with -
@@ -16,14 +17,6 @@ const normalizePageUrl = (pageUrl = '') => (
         // remove final - if url had trailing slash
         .replace(/-$/, '')}.json`
 );
-
-/**
- * Computes a default path for pa11y reports from the audited page URL.
- * 
- * @param {string} pageUrl the audited page URL
- * @returns a path to save the report
- */
-const computeDefaultReportPath = (pageUrl = '') => `a11y-report/${normalizePageUrl(pageUrl)}`; 
 
 /**
  * Writes a pa11y report to <report.basePath>/<report.fileName>

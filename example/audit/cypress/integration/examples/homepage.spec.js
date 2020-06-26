@@ -16,6 +16,15 @@ context("The App", () => {
     cy.pa11y();
   });
 
+  it("generates an a11y report for the home page", () => {
+    cy.pa11y({
+      report: {
+        path: '../a11y-report/homepage.json'
+      },
+      errorThreshold: 20
+    });
+  });
+
   it("audits the authenticated page", () => {
     cy.login();
 
