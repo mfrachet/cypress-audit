@@ -21,7 +21,7 @@ context("The App", () => {
       report: {
         path: '../a11y-report/homepage.json'
       },
-      errorThreshold: 20
+      threshold: 20
     });
   });
 

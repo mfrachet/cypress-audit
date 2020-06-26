@@ -11,7 +11,7 @@ const pa11y = (callback) => ({ url, opts }) => {
     .then((browser) =>
       pa11yLib(url, { browser, runners: ["axe"], ...pa11yOpts }).then((results) => {
 
-        const a11yauditPassed = (pa11yOpts.errorThreshold || 0) >= results.issues.length;
+        const a11yauditPassed = (pa11yOpts.threshold || 0) >= results.issues.length;
         const report = { passed: a11yauditPassed, ...results };
 
         if(reportOpts) {
