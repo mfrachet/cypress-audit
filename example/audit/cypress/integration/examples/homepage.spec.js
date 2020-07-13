@@ -16,17 +16,18 @@ context("The App", () => {
     cy.pa11y();
   });
 
-  it.only("audits the authenticated page", () => {
+  it("audits the authenticated page", () => {
     cy.login();
 
     cy.lighthouse({
       performance: 50,
-      // accessibility: 50,
-      // "best-practices": 50,
-      // seo: 50,
-      // pwa: 50,
+      "first-contentful-paint": 2000,
+      accessibility: 50,
+      "best-practices": 50,
+      seo: 50,
+      pwa: 50,
     });
 
-    //cy.pa11y();
+    cy.pa11y();
   });
 });
