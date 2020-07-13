@@ -1,23 +1,5 @@
 const lighthouseLib = require("lighthouse");
-
-const compare = (thresholds) => (newValue) => {
-  const errors = [];
-  const results = [];
-
-  Object.keys(thresholds).forEach((key) => {
-    if (thresholds[key] > newValue[key]) {
-      errors.push(
-        `${key} record is ${newValue[key]} and is under the ${thresholds[key]} threshold`
-      );
-    } else {
-      results.push(
-        `${key} record is ${newValue[key]} and threshold was ${thresholds[key]}`
-      );
-    }
-  });
-
-  return { errors, results };
-};
+const { computeCategories, compareWithThresholds } = require("./helpers");
 
 const lighthouse = (callback) => ({ url, thresholds, opts = {}, config }) => {
   if (port) {
@@ -33,15 +15,11 @@ const lighthouse = (callback) => ({ url, thresholds, opts = {}, config }) => {
           callback(results);
         }
 
-        return Object.keys(results.lhr.categories).reduce(
-          (acc, curr) => ({
-            ...acc,
-            [curr]: results.lhr.categories[curr].score * 100,
-          }),
-          {}
-        );
+        console.log("lol", results.lhr.audits);
+
+        return computeCategories(results.lhr.categories);
       })
-      .then(compare(thresholds));
+      .then(compareWithThresholds(thresholds));
   }
 
   return null;
