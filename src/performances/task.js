@@ -22,6 +22,12 @@ const lighthouse = (callback) => ({ url, thresholds, opts = {}, config }) => {
         callback(results);
       }
 
+      console.log(
+        Object.keys(results.lhr.audits).filter(
+          (key) => results.lhr.audits[key].numericValue
+        )
+      );
+
       const computedAudits = computeAudits(results.lhr.audits);
       const computedCategories = computeCategories(results.lhr.categories);
 
