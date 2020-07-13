@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lighthouse": "^6.0.0",
+    "lighthouse": "^6.1.1",
     "pa11y": "^5.3.0"
   },
   "scripts": {
