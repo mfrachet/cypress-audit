@@ -2,7 +2,7 @@ const pa11yLib = require("pa11y");
 const puppeteer = require("puppeteer");
 const { writePa11yReportToFile } = require('./report');
 
-const pa11y = (callback) => ({ url, opts }) => {
+const pa11y = (callback) => ({ url, opts = {} }) => {
   const { report: reportOpts, ...pa11yOpts } = opts;
   return puppeteer
     .connect({
@@ -10,19 +10,15 @@ const pa11y = (callback) => ({ url, opts }) => {
     })
     .then((browser) =>
       pa11yLib(url, { browser, runners: ["axe"], ...pa11yOpts }).then((results) => {
-
-        const a11yauditPassed = (pa11yOpts.threshold || 0) >= results.issues.length;
-        const report = { passed: a11yauditPassed, ...results };
-
         if(reportOpts) {
-          writePa11yReportToFile(report, reportOpts);
+          writePa11yReportToFile(results, reportOpts);
         }
 
         if (callback) {
-          callback(report);
+          callback(results);
         }
 
-        return report;
+        return results;
       })
     );
 };

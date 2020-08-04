@@ -19,9 +19,8 @@ context("The App", () => {
   it("generates an a11y report for the home page", () => {
     cy.pa11y({
       report: {
-        path: '../a11y-report/homepage.json'
+        path: 'a11y-report/homepage.json'
       },
-      threshold: 20
     });
   });
 

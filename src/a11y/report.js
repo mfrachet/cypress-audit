@@ -27,7 +27,7 @@ const computeDefaultReportPath = (pageUrl = '') => (
  * @param {{ path: string }} opts 
  */
 const writePa11yReportToFile = (report, opts) => {
-    const { reportPath = computeDefaultReportPath(report.pageUrl) } = opts;
+    const { path: reportPath = computeDefaultReportPath(report.pageUrl) } = opts;
     const absoluteReportPath = path.resolve(process.cwd(), reportPath);
     const reportDir = path.dirname(absoluteReportPath);
     fs.mkdirSync(reportDir, { recursive: true });

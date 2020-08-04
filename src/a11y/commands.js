@@ -56,7 +56,6 @@ Cypress.Commands.add("pa11y", (opts) => {
   cy.url()
     .then((url) => cy.task("pa11y", { url, opts }))
     .then((results) => {
-      const { threshold = ERROR_NUMBER_THRESHOLD } = opts;
       const { issues = [] } = results;
       const groupedIssues = groupIssues(issues);
 
@@ -67,8 +66,6 @@ Cypress.Commands.add("pa11y", (opts) => {
       
       const formattedIssues = formatIssues(groupedIssues);
 
-      if (issues.length > threshold) {
-        throw new Error(`${title}\n\n${formattedIssues}`);
-      }
+      throw new Error(`${title}\n\n${formattedIssues}`);
     });
 });
