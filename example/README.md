@@ -6,7 +6,7 @@ The [example](./example) folder of this projects owns some examples that you can
 
 ```shell
 $ git clone https://github.com/mfrachet/cypress-audit
-$ cd cypress-audit
+$ cd cypress-audit/example
 $ yarn # or `npm install`
 ```
 
