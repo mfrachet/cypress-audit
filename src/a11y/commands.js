@@ -7,23 +7,18 @@ const VALID_BROWSERS = {
 };
 
 const groupIssues = (issues) => {
-  const groupedIssuesDict = issues.reduce(
-    (allIssues, { code, message, runnerExtras }) => {
-      if (allIssues[code]) {
-        allIssues[code].occurrences++;
-      } else {
-        allIssues[code] = {
-          issueId: code,
-          occurrences: 1,
-          message,
-          description: runnerExtras.description,
-          link: runnerExtras.helpUrl,
-        };
-      }
-      return allIssues;
-    },
-    {}
-  );
+  const groupedIssuesDict = issues.reduce((allIssues, { code, ...rest }) => {
+    if (allIssues[code]) {
+      allIssues[code].occurrences++;
+    } else {
+      allIssues[code] = {
+        issueId: code,
+        occurrences: 1,
+        ...rest,
+      };
+    }
+    return allIssues;
+  }, {});
 
   const groupedIssues = [];
 
@@ -38,10 +33,18 @@ const groupIssues = (issues) => {
 
 const formatIssues = (issues) => {
   return issues
-    .map(
-      (issue) =>
-        `Issue: ${issue.issueId}, # of occurrences: ${issue.occurrences}.\n- ${issue.description}\n- ${issue.link}`
-    )
+    .map((issue) => {
+      const message = issue.message ? `- ${issue.message}` : ``;
+      const context = issue.context ? `- Context: ${issue.context}` : ``;
+      const selector = issue.selector
+        ? `- Selector concerned: "${issue.selector}"`
+        : ``;
+      return `Issue: ${issue.issueId}, # of occurrences: ${issue.occurrences}.
+${message}
+${context}
+${selector}
+        `;
+    })
     .join(`\n\n`);
 };
 
