@@ -1,5 +1,5 @@
 <h5 align="center">
-Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> and <a href="https://github.com/pa11y/pa11y">Pa11y</a> audits directly in your <a href="https://cypress.io/">Cypress</a> E2E test suites
+Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> and <a href="https://github.com/pa11y/pa11y">Pa11y</a> audits directly in <a href="https://cypress.io/">Cypress</a> test suites
 </h5>
 
 ---
@@ -20,23 +20,29 @@ Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> 
 
 ## Why cypress-audit?
 
-The tools we can use nowadays to verify the quality of our applications are awesome. They help us get a huge amount of confidence about what we ship in production and alert us when some kind of regression occurs.
+We have the chance of being able to use powerful tools to verify the performance and accessibility states of applications that we build:
 
-- [Cypress](https://cypress.io/) has made business oriented workflow verification super easy and fun
-- [Lighthouse](https://developers.google.com/web/tools/lighthouse) has provided incredible tools to verify the performance of an application
-- [Pa11y](https://pa11y.org/) provides multiple tool to control the accessibility state of our applications in a wonderful way
+- [Cypress](https://cypress.io/) has made business oriented automated verifications easy
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse) has provided tools and metrics concerning applications performances
+- [Pa11y](https://pa11y.org/) has provided tools to analyze and improve the accessibility status of applications
 
-The problem is that they run in their own context and with their own internal tricks for authentication and page browsing.
+While these tools are amazingly powerful and helpful, I'm always feeling in pain when I try to use all of them in my projects.
 
-The idea of `cypress-audit` is to unify all of this by providing some [Cypress Custom Commands](https://docs.cypress.io/api/cypress-api/custom-commands.html) so that you can use these tools **directly inside your Cypress tests, close to your custom shortcut for navigation and login.**
+For example, how can I verify the performance and accessibility status of a page requiring authentication? I have to tweak Lighthouse and Pa11y configurations (that are different) and adjust my workflows accordingly.
+
+This is cumbersome because I already have my authentication logic and shortcuts managed by Cypress: why should I add more complexity in my tests?
+
+The idea behind `cypress-audit` is to aggregate all the underlying configurations behind dedicated [Cypress custom commands](https://docs.cypress.io/api/cypress-api/custom-commands.html): you can benefit from your own custom commands and you can run cross-cutting verifications directly inside your tests.
 
 ## Usage
 
-### Installation
+### Preparation
 
-To make `cypress-audit` working in your project, you have to follow these **3 steps**:
+In order to make `cypress-audit` commands available in your project, **there are 3 steps to follow:**
 
-- In your favorite terminal:
+#### Installing the dependency
+
+In your favorite terminal:
 
 ```sh
 $ yarn add -D cypress-audit
@@ -44,7 +50,13 @@ $ yarn add -D cypress-audit
 $ npm install --save-dev cypress-audit
 ```
 
-- In the `cypress/plugins/index.js` file:
+#### Preparing the server configuration
+
+By default, if you try to run Lighthouse or Pa11y from the command line (or from Nodejs), you will see that they both open a new web browser window by default. As you may also know, Cypress also opens a dedicated browser to run its tests.
+
+The following configuration allows Lighthouse, Pa11y and Cypress to make their verifications inside the same browser (controlled by Cypress) instead of opening a new one.
+
+In the `cypress/plugins/index.js` file, make sure to have:
 
 ```javascript
 const { lighthouse, pa11y, prepareAudit } = require("cypress-audit");
@@ -61,7 +73,9 @@ module.exports = (on, config) => {
 };
 ```
 
-- In the `cypress/support/commands.js` file:
+#### Making Cypress aware of the commands
+
+When adding the following line in the `cypress/support/commands.js` file, you will be able to use `cy.lighthouse` and `cy.pa11y` inside your Cypress tests:
 
 ```javascript
 import "cypress-audit/commands";
@@ -69,7 +83,7 @@ import "cypress-audit/commands";
 
 ### In your code
 
-After completing the [Installation](#installation) section, you are now able to use the `cy.audit` and `cy.pa11y` commands inside your tests.
+After completing the [Installation](#installation) section, you can use the commands:
 
 ```javascript
 it("should pass the audits", function () {
