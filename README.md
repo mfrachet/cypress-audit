@@ -20,7 +20,7 @@ Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> 
 
 ## Why cypress-audit?
 
-We have the chance of being able to use powerful tools to verify the performance and accessibility states of applications that we build:
+We have the chance of being able to use powerful tools to automated and prevent from different kind of regressions:
 
 - [Cypress](https://cypress.io/) has made business oriented automated verifications easy
 - [Lighthouse](https://developers.google.com/web/tools/lighthouse) has provided tools and metrics concerning applications performances
