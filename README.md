@@ -8,7 +8,7 @@ Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> 
 
 - [Why cypress-audit?](#why-cypress-audit)
 - [Usage](#usage)
-  - [Installation](#installation)
+  - [Preparation](#preparation)
   - [In your code](#in-your-code)
   - [cy.pa11y()](#cypa11y)
   - [cy.lighthouse()](#cylighthouse)
@@ -83,7 +83,7 @@ import "cypress-audit/commands";
 
 ### In your code
 
-After completing the [Installation](#installation) section, you can use the commands:
+After completing the [Preparation](#preparation) section, you can use the commands:
 
 ```javascript
 it("should pass the audits", function () {
