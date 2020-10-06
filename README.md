@@ -90,9 +90,9 @@ it("should pass the audits", function () {
 
 ### Accessing the raw reports
 
-When using custom tools, it can be conveniant to directly access to raw information provided by the specific tool for doing manual things like generating a custom reports.
+When using custom tools, it can be convenient to directly access the raw information they provide for doing manual things, such as generating a custom reports.
 
-To do so, you can pass a `callback` function to the task initializer and when an audit is run, it will be triggered with the raw information.
+To do so, you can pass a `callback` function to the task initializer. Then, when an audit is run, this callback will we executed with the raw data of the underlying tool.
 
 In the `cypress/plugins/index.js` file:
 
@@ -106,10 +106,10 @@ module.exports = (on, config) => {
 
   on("task", {
     lighthouse: lighthouse((lighthouseReport) => {
-      console.log(lighthouseReport); // raw lighthouse report
+      console.log(lighthouseReport); // raw lighthouse reports
     }),
     pa11y: pa11y((pa11yReport) => {
-      console.log(pa11yReport); // raw pa11y report
+      console.log(pa11yReport); // raw pa11y reports
     }),
   });
 };
