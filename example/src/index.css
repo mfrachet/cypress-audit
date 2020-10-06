@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #3f51b5;
+  background-color: #222a5c;
 }
 
 code {
@@ -33,13 +33,13 @@ input {
 }
 
 .secondary {
-  color: #e91e63;
+  color: #5e0e28;
 }
 
 button {
   margin-top: 0.5rem;
   border: none;
-  background: #e91e63;
+  background: #5e0e28;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   color: white;

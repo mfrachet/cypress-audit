@@ -5,7 +5,7 @@ import { Layout } from "../components/Layout";
 export const Index = () => {
   const inputRef = React.useRef();
 
-  const login = e => {
+  const login = (e) => {
     e.preventDefault();
 
     // Simulate an authentication based on local storage
@@ -18,7 +18,7 @@ export const Index = () => {
   return (
     <Layout>
       <div className="card">
-        <h2>Login form</h2>
+        <h1>Login form</h1>
         <form onSubmit={login}>
           <label for="username">Username</label>
           <input id="username" type="text" ref={inputRef} />

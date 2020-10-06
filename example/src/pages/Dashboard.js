@@ -17,7 +17,7 @@ export const Dashboard = () => {
   return username ? (
     <Layout>
       <div className="card">
-        <h2>Dashboard</h2>
+        <h1>Dashboard</h1>
         Welcome <strong className="secondary">{username}</strong>
       </div>
     </Layout>

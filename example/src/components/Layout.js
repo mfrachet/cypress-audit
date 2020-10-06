@@ -1,3 +1,3 @@
 import React from "react";
 
-export const Layout = ({ children }) => <div>{children}</div>;
+export const Layout = ({ children }) => <main>{children}</main>;
