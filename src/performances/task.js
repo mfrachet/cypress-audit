@@ -13,11 +13,11 @@ const lighthouse = (callback) => ({ url, thresholds, opts = {}, config }) => {
       opts.onlyCategories = Object.keys(thresholds);
     }
 
-    return lighthouseLib(
-      url,
-      { disableStorageReset: true, ...opts },
-      config
-    ).then((results) => {
+    if (opts.disableStorageReset === undefined) {
+      opts.disableStorageReset = true;
+    }
+
+    return lighthouseLib(url, opts, config).then((results) => {
       if (callback) {
         callback(results);
       }
