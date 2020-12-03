@@ -11,7 +11,7 @@ cache:
   directories:
     - ~/.cache
 script:
-  - cd example
+  - cd example/authenticated-page
   - npm install
   - npm start &
   - npm run e2e:audit:headless
