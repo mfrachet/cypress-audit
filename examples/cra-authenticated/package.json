@@ -17,9 +17,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "e2e:audit": "cypress open",
-    "e2e:audit:headless": "cypress run --headless --browser chrome",
-    "audit:console": "yarn build && concurrently \"serve -s build -l 3000\" \"yarn e2e:audit:headless\"",
-    "audit:ui": "yarn build && concurrently \"serve -s build -l 3000\" \"yarn e2e:audit\""
+    "e2e:audit:headless": "cypress run --headless --browser chrome"
   },
   "eslintConfig": {
     "extends": "react-app"

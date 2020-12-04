@@ -13,8 +13,6 @@
     "pa11y": "^5.3.0"
   },
   "scripts": {
-    "start": "yarn --cwd ./example start",
-    "e2e": "yarn --cwd ./example e2e:audit",
-    "e2e:headless": "yarn --cwd ./example e2e:audit:headless"
+    "start": "yarn --cwd ./example start"
   }
 }
