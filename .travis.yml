@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 10
+  - 14
 addons:
   chrome: stable
   apt:
@@ -19,5 +19,13 @@ script:
   - yarn install
   - yarn build
   - serve -s build -l 3000 &
+  - yarn e2e:audit:headless
+  - kill $(jobs -p) || true
+
+script:
+  - cd examples/nextjs
+  - yarn install
+  - yarn build
+  - yarn start &
   - yarn e2e:audit:headless
   - kill $(jobs -p) || true
