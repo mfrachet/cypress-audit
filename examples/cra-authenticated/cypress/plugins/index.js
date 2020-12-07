@@ -15,7 +15,7 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-const { lighthouse, pa11y, prepareAudit } = require("../../../index");
+const { lighthouse, pa11y, prepareAudit } = require("../../../../index");
 
 module.exports = (on, config) => {
   on("before:browser:launch", (browser = {}, launchOptions) => {
