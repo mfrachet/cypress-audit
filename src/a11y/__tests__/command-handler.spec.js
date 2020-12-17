@@ -147,5 +147,57 @@ describe("pa11y command", () => {
         `);
       }
     });
+
+    it("shows multiple errors when there are multiple errors without selector", async () => {
+      global.Cypress = {
+        browser: {
+          displayName: "Chrome",
+        },
+      };
+
+      global.cy = {
+        url: () => Promise.resolve("my-url"),
+        task: jest.fn(() =>
+          Promise.resolve([
+            {
+              code: "first",
+              message: "Something wrong occured",
+              context: "Additional context found",
+            },
+            {
+              code: "second",
+              message: "Something wrong occured again",
+              context: "Additional context found again",
+            },
+            {
+              code: "second",
+              message: "Something wrong occured again",
+              context: "Additional context found again",
+            },
+          ])
+        ),
+        log: jest.fn(),
+      };
+
+      try {
+        await pa11yCommandHandler({ a: "bcd" });
+      } catch (e) {
+        expect(e.message).toMatchInlineSnapshot(`
+          "cy.pa11y - 3 accessibility violations were found
+
+          Issue: first, # of occurrences: 1.
+            - Something wrong occured
+            - Context: Additional context found
+            
+                    
+
+          Issue: second, # of occurrences: 2.
+            - Something wrong occured again
+            - Context: Additional context found again
+            
+                    "
+        `);
+      }
+    });
   });
 });
