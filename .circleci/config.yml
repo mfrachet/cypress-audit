@@ -30,4 +30,5 @@ workflows:
     build:
       jobs:
         - e2e-nextjs
+        - e2e-cra
    
