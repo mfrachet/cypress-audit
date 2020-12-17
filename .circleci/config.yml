@@ -5,9 +5,7 @@ jobs:
       - image: cypress/browsers:node14.7.0-chrome84
     steps:
       - checkout
-      - run:
-        name: E2E testing nextjs
-        command: |
+      - run: |
           cd examples/nextjs
           yarn install
           yarn build 
