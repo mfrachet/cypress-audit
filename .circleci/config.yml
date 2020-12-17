@@ -1,7 +1,8 @@
 version: 2.1
-orbs:
-  node: circleci/node@3.0.0
-workflows:
-  node-tests:
-    jobs:
-      - node/test
+jobs:
+  e2e-nextjs:
+    docker: 
+      - image: circleci/node:14
+    steps:
+      - checkout
+      - run: yarn --version
