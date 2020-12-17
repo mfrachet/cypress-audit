@@ -58,13 +58,13 @@ const formatIssues = (issues) => {
 
 const pa11yCommandHandler = (opts) => {
   if (!VALID_BROWSERS[Cypress.browser.displayName]) {
-    return global.cy.log(
+    return cy.log(
       "cy.pa11y()",
       `${Cypress.browser.displayName} is not supported. Skipping...`
     );
   }
 
-  return global.cy
+  return cy
     .url()
     .then((url) => cy.task("pa11y", { url, opts }))
     .then((issues) => {
