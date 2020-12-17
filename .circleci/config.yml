@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
       - run: |
+          yarn install
           cd examples/nextjs
           yarn install
           yarn build 
