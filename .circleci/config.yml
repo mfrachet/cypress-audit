@@ -6,8 +6,8 @@ jobs:
     steps:
       - checkout
       - run:
-        - name: E2E testing nextjs
-        - command: |
+        name: E2E testing nextjs
+        command: |
           cd examples/nextjs
           yarn install
           yarn build 
