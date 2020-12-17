@@ -36,6 +36,7 @@ workflows:
     version: 2.1
     build:
       jobs:
+        - unit-tests
         - e2e-nextjs
         - e2e-cra
    
