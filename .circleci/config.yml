@@ -5,11 +5,10 @@ jobs:
       - image: circleci/node:14
     steps:
       - checkout
-      - run: cd examples/nextjs
-      - run: yarn
-      - run: yarn build
-      - run: yarn start &
-      - run: yarn e2e:audit:headless
+      - run: yarn --cwd "examples/nextjs" install 
+      - run: yarn --cwd "examples/nextjs" build 
+      - run: yarn --cwd "examples/nextjs" start &
+      - run: yarn --cwd "examples/nextjs" e2e:audit:headless
 
 workflows:
     version: 2.1
