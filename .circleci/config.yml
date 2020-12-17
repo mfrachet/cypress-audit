@@ -5,10 +5,14 @@ jobs:
       - image: cypress/browsers:node14.7.0-chrome84
     steps:
       - checkout
-      - run: yarn --cwd "examples/nextjs" install 
-      - run: yarn --cwd "examples/nextjs" build 
-      - run: yarn --cwd "examples/nextjs" start &
-      - run: yarn --cwd "examples/nextjs" e2e:audit:headless
+      - run:
+        - name: E2E testing nextjs
+        - command: |
+          cd examples/nextjs
+          yarn install
+          yarn build 
+          yarn start &
+          yarn e2e:audit:headless
 
 workflows:
     version: 2.1
