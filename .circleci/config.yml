@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   unit-tests:
     docker:
-      - image: cimg/node:14
+      - image: circleci/node:14
     steps:
         - checkout
         - run: yarn install
