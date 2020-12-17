@@ -40,7 +40,6 @@ describe("performance helpers", () => {
       const thresholds = { performance: 60, accessibility: 11 };
 
       const actual = compareWithThresholds(metrics, thresholds);
-      const expected = { performance: { numericValue: 12 } };
 
       expect(actual).toEqual({
         errors: [
@@ -60,7 +59,6 @@ describe("performance helpers", () => {
       const thresholds = { performance: 40, accessibility: 13 };
 
       const actual = compareWithThresholds(metrics, thresholds);
-      const expected = { performance: { numericValue: 12 } };
 
       expect(actual).toEqual({
         errors: [],
