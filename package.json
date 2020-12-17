@@ -13,6 +13,11 @@
     "pa11y": "^5.3.0"
   },
   "scripts": {
-    "start": "yarn --cwd ./example start"
+    "start": "yarn --cwd ./example start",
+    "test": "jest ./src"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1"
   }
 }

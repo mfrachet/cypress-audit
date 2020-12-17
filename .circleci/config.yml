@@ -1,5 +1,12 @@
 version: 2.1
 jobs:
+  unit-tests:
+    docker:
+      - image: circleci/node:14
+    steps:
+        - checkout
+        - run: yarn install
+        - run: yarn test
   e2e-nextjs:
     docker: 
       - image: cypress/browsers:node14.7.0-chrome84
@@ -29,6 +36,7 @@ workflows:
     version: 2.1
     build:
       jobs:
+        - unit-tests
         - e2e-nextjs
         - e2e-cra
    

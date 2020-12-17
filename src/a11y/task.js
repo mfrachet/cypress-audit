@@ -1,20 +1,18 @@
 const pa11yLib = require("pa11y");
 const puppeteer = require("puppeteer");
 
-const pa11y = (callback) => ({ url, opts }) => {
-  return puppeteer
-    .connect({
-      browserURL: `http://localhost:${global.port}`,
-    })
-    .then((browser) =>
-      pa11yLib(url, { browser, runners: ["axe"], ...opts }).then((results) => {
-        if (callback) {
-          callback(results);
-        }
+const pa11y = (callback) => async ({ url, opts }) => {
+  const browser = await puppeteer.connect({
+    browserURL: `http://localhost:${global.port}`,
+  });
 
-        return results.issues || [];
-      })
-    );
+  const results = await pa11yLib(url, { browser, runners: ["axe"], ...opts });
+
+  if (callback) {
+    callback(results);
+  }
+
+  return results.issues || [];
 };
 
 module.exports = { pa11y };
