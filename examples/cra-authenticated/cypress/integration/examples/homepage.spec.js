@@ -20,7 +20,7 @@ context("The App", () => {
     cy.login();
 
     cy.lighthouse({
-      performance: 50,
+      performance: 100,
       "first-contentful-paint": 2000,
       accessibility: 50,
       "best-practices": 50,
