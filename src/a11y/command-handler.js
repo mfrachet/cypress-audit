@@ -5,18 +5,27 @@ const VALID_BROWSERS = {
 };
 
 const groupIssues = (issues) => {
-  const groupedIssuesDict = issues.reduce((allIssues, { code, ...rest }) => {
-    if (allIssues[code]) {
-      allIssues[code].occurrences++;
-    } else {
-      allIssues[code] = {
-        issueId: code,
-        occurrences: 1,
-        ...rest,
-      };
-    }
-    return allIssues;
-  }, {});
+  const groupedIssuesDict = issues.reduce(
+    (allIssues, { code, selector, ...rest }) => {
+      if (allIssues[code]) {
+        allIssues[code].occurrences++;
+      } else {
+        allIssues[code] = {
+          selectors: [],
+          issueId: code,
+          occurrences: 1,
+          ...rest,
+        };
+      }
+
+      if (selector) {
+        allIssues[code].selectors.push(selector);
+      }
+
+      return allIssues;
+    },
+    {}
+  );
 
   const groupedIssues = [];
 
@@ -34,9 +43,10 @@ const formatIssues = (issues) => {
     .map((issue) => {
       const message = issue.message ? `- ${issue.message}` : ``;
       const context = issue.context ? `- Context: ${issue.context}` : ``;
-      const selector = issue.selector
-        ? `- Selector concerned: "${issue.selector}"`
-        : ``;
+      const selector =
+        issue.selectors.length > 0
+          ? `- Selector concerned: "${issue.selectors.join(",")}"`
+          : ``;
       return `Issue: ${issue.issueId}, # of occurrences: ${issue.occurrences}.
   ${message}
   ${context}

@@ -56,7 +56,7 @@ describe("pa11y command", () => {
   });
 
   describe("when issues", () => {
-    it.only("shows an error when there s one error", async () => {
+    it("shows an error when there s one error", async () => {
       global.Cypress = {
         browser: {
           displayName: "Chrome",
@@ -88,6 +88,61 @@ describe("pa11y command", () => {
             - Something wrong occured
             - Context: Additional context found
             - Selector concerned: \\".somewhere-in-the-world\\"
+                    "
+        `);
+      }
+    });
+
+    it("shows multiple errors when there are multiple errors", async () => {
+      global.Cypress = {
+        browser: {
+          displayName: "Chrome",
+        },
+      };
+
+      global.cy = {
+        url: () => Promise.resolve("my-url"),
+        task: jest.fn(() =>
+          Promise.resolve([
+            {
+              code: "first",
+              message: "Something wrong occured",
+              context: "Additional context found",
+              selector: ".somewhere-in-the-world",
+            },
+            {
+              code: "second",
+              message: "Something wrong occured again",
+              context: "Additional context found again",
+              selector: ".somewhere-in-the-world-again",
+            },
+            {
+              code: "second",
+              message: "Something wrong occured again",
+              context: "Additional context found again",
+              selector: ".somewhere-in-the-world-again-2",
+            },
+          ])
+        ),
+        log: jest.fn(),
+      };
+
+      try {
+        await pa11yCommandHandler({ a: "bcd" });
+      } catch (e) {
+        expect(e.message).toMatchInlineSnapshot(`
+          "cy.pa11y - 3 accessibility violations were found
+
+          Issue: first, # of occurrences: 1.
+            - Something wrong occured
+            - Context: Additional context found
+            - Selector concerned: \\".somewhere-in-the-world\\"
+                    
+
+          Issue: second, # of occurrences: 2.
+            - Something wrong occured again
+            - Context: Additional context found again
+            - Selector concerned: \\".somewhere-in-the-world-again,.somewhere-in-the-world-again-2\\"
                     "
         `);
       }
