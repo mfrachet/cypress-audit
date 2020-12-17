@@ -20,7 +20,7 @@ jobs:
       - run: |
           npm i -g serve
           yarn install
-          examples/cra-authenticated
+          cd examples/cra-authenticated
           yarn install
           yarn build
           serve -s build -l 3000 &
