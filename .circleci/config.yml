@@ -5,7 +5,6 @@ jobs:
       - image: circleci/node:14
     steps:
       - checkout
-      - run: npm i -g serve
       - run: cd examples/nextjs
       - run: yarn
       - run: yarn build
