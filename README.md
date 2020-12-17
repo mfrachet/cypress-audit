@@ -4,7 +4,7 @@ Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> 
 
 ---
 
-[![Build Status](https://travis-ci.org/mfrachet/cypress-audit.svg?branch=master)](https://travis-ci.org/mfrachet/cypress-audit) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![mfrachet/cypress-audit](https://circleci.com/gh/mfrachet/cypress-audit.svg?style=shield)](https://app.circleci.com/pipelines/github/mfrachet/cypress-audit) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 - [Why cypress-audit?](#why-cypress-audit)
 - [Usage](#usage)
