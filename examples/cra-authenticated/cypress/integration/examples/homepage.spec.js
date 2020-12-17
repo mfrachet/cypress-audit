@@ -21,11 +21,11 @@ context("The App", () => {
 
     cy.lighthouse({
       performance: 100,
-      "first-contentful-paint": 2000,
-      accessibility: 50,
-      "best-practices": 50,
-      seo: 50,
-      pwa: 50,
+      "first-contentful-paint": 100,
+      accessibility: 100,
+      "best-practices": 100,
+      seo: 100,
+      pwa: 100,
     });
 
     cy.pa11y();
