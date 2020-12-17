@@ -12,7 +12,19 @@ jobs:
           yarn build 
           yarn start &
           yarn e2e:audit:headless
-
+  e2e-cra:
+    docker: 
+      - image: cypress/browsers:node14.7.0-chrome84
+    steps:
+      - checkout
+      - run: |
+          npm i -g serve
+          yarn install
+          examples/cra-authenticated
+          yarn install
+          yarn build
+          serve -s build -l 3000 &
+          yarn e2e:audit:headless
 workflows:
     version: 2.1
     build:
