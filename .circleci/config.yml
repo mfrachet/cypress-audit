@@ -5,7 +5,12 @@ jobs:
       - image: circleci/node:14
     steps:
       - checkout
-      - run: yarn --version
+      - run: npm i -g serve
+      - run: cd examples/nextjs
+      - run: yarn
+      - run: yarn build
+      - run: yarn start &
+      - run: yarn e2e:audit:headless
 
 workflows:
     version: 2.1
