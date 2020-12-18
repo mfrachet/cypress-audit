@@ -51,20 +51,12 @@ declare namespace Cypress {
     }
 
     interface Chainable<Subject> {
-     
-      /**
-       * Select and add product to Cart
-       * @example
-       * cy.selectProduct(productName, size , color)
-       */
-      selectProduct(productName: String, size: String , color: String): Chainable<any>
-
       /**
        * Runs a pa11y audit
        * @example
        * cy.pa11y(opts)
        */
-      pa11y(opts?: Options):Chainable<void>
+      pa11y(opts?: Options)
 
       /**
        * Runs a lighthouse audit
