@@ -10,7 +10,7 @@ context("The App", () => {
       accessibility: 40,
       "best-practices": 50,
       seo: 50,
-      pwa: 40,
+      pwa: 20,
       performance: 50,
     });
   });
