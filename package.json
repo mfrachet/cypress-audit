@@ -15,7 +15,7 @@
   "scripts": {
     "start": "yarn --cwd ./example start",
     "test": "jest --rootDir=./src",
-    "lint":"eslint ./src --fix"
+    "lint": "eslint ./src --fix"
   },
   "devDependencies": {
     "eslint": "^7.15.0",
