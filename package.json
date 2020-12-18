@@ -15,9 +15,10 @@
   "scripts": {
     "start": "yarn --cwd ./example start",
     "test": "jest --rootDir=./src",
-    "lint":"eslint ./src --fix"
+    "lint": "eslint ./src --fix"
   },
   "devDependencies": {
+    "@types/pa11y": "^5.3.2",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",

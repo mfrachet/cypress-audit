@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+/// <reference types="../../" />
 
 context("The App", () => {
   beforeEach(() => {
@@ -13,5 +14,7 @@ context("The App", () => {
       pwa: 40,
       performance: 50,
     });
+    
+    
   });
 });
