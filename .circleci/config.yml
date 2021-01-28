@@ -50,4 +50,5 @@ workflows:
         - unit-tests
         - e2e-nextjs
         - e2e-cra
+        - e2e-nx
    
