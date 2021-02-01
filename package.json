@@ -9,11 +9,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lighthouse": "^7.0.0",
+    "lighthouse": "^7.0.1",
     "pa11y": "^5.3.0"
   },
   "scripts": {
-    "start": "yarn --cwd ./example start",
     "test": "jest --rootDir=./src",
     "lint": "eslint ./src --fix"
   },

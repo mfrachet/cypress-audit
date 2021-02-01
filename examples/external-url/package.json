@@ -1,0 +1,13 @@
+{
+  "name": "external-url",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "e2e:audit": "cypress open",
+    "e2e:audit:headless": "cypress run --headless --browser chrome"
+  },
+  "devDependencies": {
+    "cypress": "^6.3.0"
+  }
+}
