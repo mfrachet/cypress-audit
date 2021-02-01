@@ -3,7 +3,7 @@ describe("External", () => {
     cy.visit("https://google.com/");
 
     cy.lighthouse({
-      accessibility: 90,
+      accessibility: 50,
       "best-practices": 50,
       seo: 50,
       pwa: 50,
