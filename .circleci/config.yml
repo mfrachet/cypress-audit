@@ -50,6 +50,8 @@ jobs:
       - checkout
       - run: |
           yarn install
+          cd examples/external-url
+          yarn install
           yarn e2e:audit:headless
 workflows:
     version: 2.1
