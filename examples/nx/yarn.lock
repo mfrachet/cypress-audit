@@ -4500,10 +4500,10 @@ cyclist@^1.0.1:
 "cypress-audit@file:../..":
   version "0.3.0"
   dependencies:
-    lighthouse "^7.0.0"
+    lighthouse "^7.0.1"
     pa11y "^5.3.0"
 
-cypress@^6.0.1:
+cypress@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/cypress/-/cypress-6.3.0.tgz#e27bba01d7e493265700e1e85333dca0b0127ede"
   integrity sha512-Ec6TAFOxdSB2HPINNJ1f7z75pENXcfCaQkz+A9j0eGSvusFJ2NNErq650DexCbNJAnCQkPqXB4XPH9kXnSQnUA==
@@ -8043,7 +8043,7 @@ lighthouse-stack-packs@^1.4.0:
   resolved "https://registry.yarnpkg.com/lighthouse-stack-packs/-/lighthouse-stack-packs-1.4.0.tgz#bf98e0fb04a091ec2d73648842698b41070968ef"
   integrity sha512-wdv94WUjaqUwtW8DOapng45Yah62c5O5geNVeoSQlnoagfbTO/YbiwNlfzDIF1xNKRkPlsfr/oWHhXsaHXDivg==
 
-lighthouse@^7.0.0:
+lighthouse@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/lighthouse/-/lighthouse-7.0.1.tgz#137868a92f0b43c5c3de242f01fbdc7ace756f86"
   integrity sha512-OMCa/TmhrIXW5o9AtUuC3bUhiTABv53xD9bNuolUgdSwpAWHG6e5Iy/hXcA84WFB/7Zni0uExwgDDWx6KE9Ngw==
