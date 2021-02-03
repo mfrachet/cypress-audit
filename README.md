@@ -13,6 +13,7 @@ Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> 
   - [cy.lighthouse()](./docs/lighthouse.md)
   - [cy.pa11y()](./docs/pa11y.md)
   - [Accessing the raw reports](#accessing-the-raw-reports)
+- [Examples](#examples)
 
 ## Why cypress-audit?
 
@@ -114,3 +115,14 @@ module.exports = (on, config) => {
   });
 };
 ```
+
+## Examples
+
+In order to verify the state of this projects, automated tests are run on CI on examples projects. These projects are located in the [examples folder](./examples) and contain audits for:
+
+- [create-react-app (with authentication)](./examples/cra-authenticated)
+- [nextjs](./examples/nextjs)
+- [testing on external URLs](./examples/external-url)
+- [NX](./examples/nx)
+
+If you have a specific configuration or are running using a specific tool, you can add a project example and make it part of the CI process.
