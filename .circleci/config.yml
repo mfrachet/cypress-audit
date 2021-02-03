@@ -43,6 +43,16 @@ jobs:
           cd examples/nx
           yarn install
           yarn e2e nx-e2e
+  e2e-external:
+    docker: 
+      - image: cypress/browsers:node14.7.0-chrome84
+    steps:
+      - checkout
+      - run: |
+          yarn install
+          cd examples/external-url
+          yarn install
+          yarn e2e:audit:headless
 workflows:
     version: 2.1
     build:
@@ -51,4 +61,5 @@ workflows:
         - e2e-nextjs
         - e2e-cra
         - e2e-nx
+        - e2e-external
    
