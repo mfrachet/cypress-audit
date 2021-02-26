@@ -43,3 +43,22 @@ jobs:
           yarn build
           serve -s build -l 3000 &
           yarn e2e:audit:headless
+  nx:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Running NX test
+        run: |
+          cd examples/nx
+          npm install
+          npm run e2e nx-e2e
