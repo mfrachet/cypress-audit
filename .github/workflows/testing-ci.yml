@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  e2e:
+  static:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -43,7 +43,7 @@ jobs:
           yarn build
           serve -s build -l 3000 &
           yarn e2e:audit:headless
-  nx:
+  nextjs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -57,8 +57,10 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Running NX test
+      - name: Running Nextjs test
         run: |
-          cd examples/nx
-          npm install
-          npm run e2e nx-e2e
+          cd examples/nextjs
+          yarn install
+          yarn build 
+          yarn start &
+          yarn e2e:audit:headless
