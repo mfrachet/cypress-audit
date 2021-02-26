@@ -4,7 +4,7 @@ Run <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> 
 
 ---
 
-[![mfrachet/cypress-audit](https://circleci.com/gh/mfrachet/cypress-audit.svg?style=shield)](https://app.circleci.com/pipelines/github/mfrachet/cypress-audit) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 - [Why cypress-audit?](#why-cypress-audit)
 - [Usage](#usage)
@@ -88,6 +88,8 @@ it("should pass the audits", function () {
   cy.pa11y();
 });
 ```
+
+ℹ️ _When running the different audits, a new tab will open. It's **normal**. Lighthouse works that way and I don't think we can manage this otherwise (if you know how, please reach out to me :pray:)._
 
 ### Accessing the raw reports
 
