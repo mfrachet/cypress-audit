@@ -4,12 +4,12 @@ jobs:
     docker:
       - image: circleci/node:14
     steps:
-        - checkout
-        - run: yarn install
-        - run: yarn lint
-        - run: yarn test
+      - checkout
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn test
   e2e-nextjs:
-    docker: 
+    docker:
       - image: cypress/browsers:node14.7.0-chrome84
     steps:
       - checkout
@@ -21,7 +21,7 @@ jobs:
           yarn start &
           yarn e2e:audit:headless
   e2e-cra:
-    docker: 
+    docker:
       - image: cypress/browsers:node14.7.0-chrome84
     steps:
       - checkout
@@ -34,17 +34,17 @@ jobs:
           serve -s build -l 3000 &
           yarn e2e:audit:headless
   e2e-nx:
-    docker: 
+    docker:
       - image: cypress/browsers:node14.7.0-chrome84
     steps:
       - checkout
       - run: |
           yarn install
           cd examples/nx
-          yarn install
-          yarn e2e nx-e2e
+          npm install
+          npm run e2e nx-e2e
   e2e-external:
-    docker: 
+    docker:
       - image: cypress/browsers:node14.7.0-chrome84
     steps:
       - checkout
@@ -54,12 +54,11 @@ jobs:
           yarn install
           yarn e2e:audit:headless
 workflows:
-    version: 2.1
-    build:
-      jobs:
-        - unit-tests
-        - e2e-nextjs
-        - e2e-cra
-        - e2e-nx
-        - e2e-external
-   
+  version: 2.1
+  build:
+    jobs:
+      - unit-tests
+      - e2e-nextjs
+      - e2e-cra
+      - e2e-nx
+      - e2e-external
