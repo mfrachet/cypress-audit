@@ -1,0 +1,45 @@
+name: Automated tests
+on:
+  pull_request:
+    branches: ["master"]
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latests]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+  cra:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latests]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Moving into CRA folder
+        run: cd ./examples/cra-authenticated
+
+      - name: Install CRA dependencies
+        run: yarn
+
+      - name: Running CRA test
+        run: |
+          npm i -g serve
+          yarn build
+          serve -s build -l 3000 &
+          yarn e2e:audit:headless
