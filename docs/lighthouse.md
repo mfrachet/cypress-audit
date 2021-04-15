@@ -10,9 +10,9 @@ Lighthouse is a tool that is supposed to run against a production bundle for com
 
 ## Thresholds per tests
 
-If you don't provide any argument to the `cy.audit` command, the test will fail if at least one of your metrics is under `100`.
+If you don't provide any argument to the `cy.lighthouse` command, the test will fail if at least one of your metrics is under `100`.
 
-You can make assumptions on the different metrics by passing an object as argument to the `cy.audit` command:
+You can make assumptions on the different metrics by passing an object as argument to the `cy.lighthouse` command:
 
 ```javascript
 it("should verify the lighthouse scores with thresholds", function () {
