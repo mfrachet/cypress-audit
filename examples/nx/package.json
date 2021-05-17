@@ -34,7 +34,6 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "cypress-audit": "file:../..",
     "@babel/core": "7.9.6",
     "@babel/preset-env": "7.9.6",
     "@babel/preset-react": "7.9.4",
@@ -55,7 +54,8 @@
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",
     "babel-jest": "26.2.2",
-    "cypress": "^7.1.0",
+    "cypress": "^7.3.0",
+    "cypress-audit": "file:../..",
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
     "eslint-config-prettier": "6.0.0",
