@@ -54,7 +54,7 @@
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",
     "babel-jest": "26.2.2",
-    "cypress": "^7.3.0",
+    "cypress": "^8.5.0",
     "cypress-audit": "file:../..",
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
