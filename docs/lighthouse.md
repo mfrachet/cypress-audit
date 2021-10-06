@@ -79,7 +79,42 @@ const lighthouseConfig = {
 cy.lighthouse(thresholds, lighthouseOptions, lighthouseConfig);
 ```
 
-#### Available metrics
+### Lighthouse scores may be different between local run and cypress-audit
+
+According to https://github.com/mfrachet/cypress-audit/issues/89, it's possible that cypress-audit provides different Lighthouse results comparing to a local run in a browser. **It's important to keep in mind that cypress-audit is just a wrapper around lighthouse.** It does not do anything special except calling the regular [Lighthouse](https://www.npmjs.com/package/lighthouse) module through Cypress commands.
+
+To fix this issue, and to get results closer to Lighthouse runs in the browser, you may want to rely on [Lighthouse defaults](https://github.com/GoogleChrome/lighthouse/blob/master/lighthouse-core/config/constants.js) configurations and pass them to cypress-audit.
+
+For instance @maciejtrzcinski in the previous issue suggests to rely on the following configuration in order to have result closer to the run in the browser:
+
+```js
+const customThresholds = {
+  performance: 90,
+};
+
+const desktopConfig = {
+  formFactor: "desktop",
+  screenEmulation: {
+    width: 1350,
+    height: 940,
+    deviceScaleRatio: 1,
+    mobile: false,
+    disable: false,
+  },
+  throttling: {
+    rttMs: 40,
+    throughputKbps: 11024,
+    cpuSlowdownMultiplier: 1,
+    requestLatencyMs: 0,
+    downloadThroughputKbps: 0,
+    uploadThroughputKbps: 0,
+  },
+};
+
+cy.lighthouse(customThresholds, desktopConfig);
+```
+
+### Available metrics
 
 With Lighthouse 6, we're now able to make assumptions on **categories** and **audits**.
 
