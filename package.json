@@ -9,8 +9,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lighthouse": "^8.0.0",
-    "pa11y": "^5.3.0"
+    "lighthouse": "^8.5.1",
+    "pa11y": "^6.0.1"
   },
   "scripts": {
     "test": "jest --rootDir=./src",
