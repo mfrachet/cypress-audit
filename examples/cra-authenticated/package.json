@@ -38,7 +38,7 @@
     "@cypress-audit/lighthouse": "^1.0.0",
     "@cypress-audit/pa11y": "^1.0.0",
     "concurrently": "^5.3.0",
-    "cypress": "^8.5.0",
+    "cypress": "^9.1.0",
     "serve": "^11.3.2"
   }
 }
