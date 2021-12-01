@@ -2,6 +2,7 @@
   "name": "cypress-audit",
   "version": "1.0.0",
   "main": "index.js",
+  "private": true,
   "author": "Marvin FRACHET <marvin.frachet@gmail.com> (https://github.com/mfrachet)",
   "repository": {
     "type": "git",
@@ -11,7 +12,8 @@
   "scripts": {
     "test": "lerna run test",
     "lint": "lerna run lint",
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "release": "lerna publish"
   },
   "devDependencies": {
     "eslint": "^7.15.0",
