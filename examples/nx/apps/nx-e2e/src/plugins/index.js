@@ -12,7 +12,8 @@
 // the project's config changing)
 
 const { preprocessTypescript } = require('@nrwl/cypress/plugins/preprocessor');
-const { lighthouse, pa11y, prepareAudit } = require('cypress-audit');
+const { lighthouse, prepareAudit } = require('@cypress-audit/lighthouse');
+const { pa11y } = require('@cypress-audit/pa11y');
 
 module.exports = (on, config) => {
   on('before:browser:launch', (browser = {}, launchOptions) => {

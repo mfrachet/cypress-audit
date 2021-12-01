@@ -1,13 +1,14 @@
-import "cypress-audit/commands";
+import '@cypress-audit/lighthouse/commands';
+import '@cypress-audit/pa11y/commands';
 
 describe('nx', () => {
   beforeEach(() => cy.visit('/'));
 
-  it("should verify the lighthouse scores with thresholds", function () {
+  it('should verify the lighthouse scores with thresholds', function () {
     cy.lighthouse({
       performance: 40,
       accessibility: 40,
-      "best-practices": 40,
+      'best-practices': 40,
       seo: 85,
       pwa: 10,
     });
