@@ -33,16 +33,16 @@ jobs:
           node-version: "14"
 
       - name: Install dependencies
-        run: yarn
+        run: npm i && npm run bootstrap
 
       - name: Running CRA test
         run: |
           npm i -g serve
           cd ./examples/cra-authenticated
-          yarn
-          yarn build
+          npm i
+          npm run build
           serve -s build -l 3000 &
-          yarn e2e:audit:headless
+          npm run e2e:audit:headless
   nextjs:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -55,15 +55,15 @@ jobs:
           node-version: "14"
 
       - name: Install dependencies
-        run: yarn
+        run: npm i && npm run bootstrap
 
       - name: Running Nextjs test
         run: |
           cd examples/nextjs
-          yarn install
-          yarn build 
-          yarn start &
-          yarn e2e:audit:headless
+          npm install
+          npm run build 
+          npm start &
+          npm run e2e:audit:headless
   external:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -76,13 +76,13 @@ jobs:
           node-version: "14"
 
       - name: Install dependencies
-        run: yarn
+        run: npm i && npm run bootstrap
 
       - name: Running External test
         run: |
           cd examples/external-url
-          yarn install
-          yarn e2e:audit:headless
+          npm install
+          npm run e2e:audit:headless
 
   nx:
     runs-on: ${{ matrix.os }}
@@ -96,10 +96,10 @@ jobs:
           node-version: "14"
 
       - name: Install dependencies
-        run: yarn
+        run: npm i && npm run bootstrap
 
       - name: Running NX test
         run: |
           cd examples/nx
-          yarn
-          yarn e2e nx-e2e
+          npm i
+          npm run e2e nx-e2e
