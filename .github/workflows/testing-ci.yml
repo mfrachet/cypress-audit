@@ -17,10 +17,10 @@ jobs:
           node-version: "14"
 
       - name: Install dependencies
-        run: yarn && yarn bootstrap
+        run: npm i && npm run bootstrap
 
       - name: Lint
-        run: yarn lint
+        run: npm run lint
   cra:
     runs-on: ${{ matrix.os }}
     strategy:
