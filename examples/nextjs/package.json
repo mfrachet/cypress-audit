@@ -2,6 +2,7 @@
   "name": "nextjs",
   "version": "1.0.0",
   "main": "index.js",
+  "private": "true",
   "license": "MIT",
   "scripts": {
     "dev": "next dev -p 2000",
@@ -16,6 +17,8 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "cypress": "^8.5.0"
+    "cypress": "^8.5.0",
+    "@cypress-audit/lighthouse": "^1.0.0",
+    "@cypress-audit/pa11y": "^1.0.0"
   }
 }
