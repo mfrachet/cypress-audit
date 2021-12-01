@@ -2,12 +2,15 @@
   "name": "external-url",
   "version": "1.0.0",
   "main": "index.js",
+  "private": "true",
   "license": "MIT",
   "scripts": {
     "e2e:audit": "cypress open",
     "e2e:audit:headless": "cypress run --headless --browser chrome"
   },
   "devDependencies": {
-    "cypress": "^8.5.0"
+    "@cypress-audit/lighthouse": "^1.0.0",
+    "@cypress-audit/pa11y": "^1.0.0",
+    "cypress": "^9.1.0"
   }
 }

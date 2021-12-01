@@ -1,0 +1,14 @@
+{
+  "name": "@cypress-audit/shared",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Marvin FRACHET <marvin.frachet@gmail.com> (https://github.com/mfrachet)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mfrachet/cypress-audit"
+  },
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint ./index.js --fix"
+  }
+}

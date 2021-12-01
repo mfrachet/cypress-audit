@@ -1,0 +1,19 @@
+{
+  "name": "@cypress-audit/pa11y",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Marvin FRACHET <marvin.frachet@gmail.com> (https://github.com/mfrachet)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mfrachet/cypress-audit"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@cypress-audit/shared": "^1.0.0",
+    "pa11y": "^6.0.1"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ./ --fix"
+  }
+}
