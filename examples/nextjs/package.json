@@ -1,6 +1,6 @@
 {
   "name": "nextjs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "private": "true",
   "license": "MIT",
@@ -17,8 +17,8 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@cypress-audit/lighthouse": "^1.0.0",
-    "@cypress-audit/pa11y": "^1.0.0",
+    "@cypress-audit/lighthouse": "^1.1.0",
+    "@cypress-audit/pa11y": "^1.1.0",
     "cypress": "^9.1.0"
   }
 }

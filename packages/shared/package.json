@@ -1,6 +1,6 @@
 {
   "name": "@cypress-audit/shared",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "author": "Marvin FRACHET <marvin.frachet@gmail.com> (https://github.com/mfrachet)",
   "repository": {
