@@ -22,7 +22,7 @@ context("The App", () => {
 
     cy.lighthouse({
       performance: 50,
-      "first-contentful-paint": 3000,
+      "first-contentful-paint": 3500,
       accessibility: 50,
       "best-practices": 50,
       seo: 50,
