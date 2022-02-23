@@ -11,6 +11,6 @@
   "devDependencies": {
     "@cypress-audit/lighthouse": "^1.1.0",
     "@cypress-audit/pa11y": "^1.1.0",
-    "cypress": "^9.1.0"
+    "cypress": "^9.5.0"
   }
 }
