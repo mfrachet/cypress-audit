@@ -6,7 +6,7 @@ const {
 } = require("./helpers");
 
 const lighthouse = (callback) => ({ url, thresholds, opts = {}, config }) => {
-  if (port) {
+  if (global.cypress_audit_port) {
     opts.port = global.cypress_audit_port;
 
     if (!opts.onlyCategories) {
