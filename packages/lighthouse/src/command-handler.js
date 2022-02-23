@@ -21,12 +21,18 @@ const lighthouseCommandHandler = (thresholds, opts, config) => {
   }
 
   return cy.url().then((url) => {
+    // Handling the default value in cypress.json for "thresholds", "config" and "options"
     const lighthouseConfig = Cypress.config("lighthouse");
+
     const configThresholds = lighthouseConfig
       ? lighthouseConfig.thresholds
       : undefined;
 
-    const deviceConfig = lighthouseConfig ? lighthouseConfig.config : undefined;
+    const globalOptions = lighthouseConfig
+      ? lighthouseConfig.options
+      : undefined;
+
+    const globalConfig = lighthouseConfig ? lighthouseConfig.config : undefined;
 
     if (!thresholds && !configThresholds) {
       cy.log(
@@ -40,8 +46,8 @@ const lighthouseCommandHandler = (thresholds, opts, config) => {
       .task("lighthouse", {
         url,
         thresholds: thresholds || configThresholds || defaultThresholds,
-        opts,
-        config: config || deviceConfig,
+        opts: opts || globalOptions,
+        config: config || globalConfig,
       })
       .then(({ errors, results }) => {
         results.forEach((res) => {
