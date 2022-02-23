@@ -21,7 +21,12 @@ const lighthouseCommandHandler = (thresholds, opts, config) => {
   }
 
   return cy.url().then((url) => {
-    const configThresholds = Cypress.config("lighthouse");
+    const lighthouseConfig = Cypress.config("lighthouse");
+    const configThresholds = lighthouseConfig
+      ? lighthouseConfig.thresholds
+      : undefined;
+
+    const deviceConfig = lighthouseConfig ? lighthouseConfig.config : undefined;
 
     if (!thresholds && !configThresholds) {
       cy.log(
@@ -36,7 +41,7 @@ const lighthouseCommandHandler = (thresholds, opts, config) => {
         url,
         thresholds: thresholds || configThresholds || defaultThresholds,
         opts,
-        config,
+        config: config || deviceConfig,
       })
       .then(({ errors, results }) => {
         results.forEach((res) => {
