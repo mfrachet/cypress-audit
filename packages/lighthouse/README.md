@@ -13,6 +13,7 @@
 - [Good to know](#good-to-know)
   - [Test with a production bundle](#test-with-a-production-bundle)
   - [Lighthouse scores may be different between local run and cypress-audit](#lighthouse-scores-may-be-different-between-local-run-and-cypress-audit)
+  - [Session storage](#session-storage)
 
 ## Installation
 
@@ -232,3 +233,9 @@ const desktopConfig = {
 
 cy.lighthouse(customThresholds, desktopConfig);
 ```
+
+### Session storage
+
+Session storage are supposed to keep data in the current browser tab. Since lighthouse will open a new tab, you won't be able to access the stored data during the audit.
+
+Hopefully, a community member has created an example on how to make session storage work on https://github.com/olyhaa-aetna/simple-auth-example

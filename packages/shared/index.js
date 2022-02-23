@@ -4,7 +4,7 @@ const prepareAudit = (launchOptions) => {
   );
 
   if (remoteDebugging) {
-    global.port = remoteDebugging.split("=")[1];
+    global.cypress_audit_port = remoteDebugging.split("=")[1];
   } else {
     console.error(
       "[cypress-audit]: Woops, something went wrong when trying to get the browser port."
