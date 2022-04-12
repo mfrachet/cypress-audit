@@ -1,0 +1,22 @@
+{
+  "name": "@cypress-audit/documentation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "predeploy": "npm run docs:build",
+    "deploy": "gh-pages -d ./docs/.vuepress/dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vuepress": "^1.9.7"
+  },
+  "dependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}
