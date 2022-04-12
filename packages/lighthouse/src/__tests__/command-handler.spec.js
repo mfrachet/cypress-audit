@@ -150,5 +150,23 @@ describe("lighthouse command", () => {
         `);
       }
     });
+
+    it("shows one error when lighthouse does not provide anything", async () => {
+      global.cy = {
+        url: () => Promise.resolve("my-url"),
+        task: jest.fn(() => Promise.resolve()),
+        log: jest.fn(),
+        wrap: jest.fn((x) => x),
+      };
+
+      try {
+        await lighthouseCommandHandler({ performance: 100, accessibility: 90 });
+      } catch (e) {
+        expect(global.cy.log).toBeCalledWith("-------- cy.lighthouse --------");
+        expect(e.message).toMatchInlineSnapshot(
+          `"For an unexpected reason, lighthouse did not manage to run correctly. It might be related to lighthouse itself."`
+        );
+      }
+    });
   });
 });

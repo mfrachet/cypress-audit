@@ -1,6 +1,6 @@
 const prepareAudit = (launchOptions) => {
   const remoteDebugging = launchOptions.args.find((config) =>
-    config.includes("--remote-debugging-port=")
+    config.startsWith("--remote-debugging-port")
   );
 
   if (remoteDebugging) {
