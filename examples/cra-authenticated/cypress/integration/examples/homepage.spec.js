@@ -7,7 +7,7 @@ context("The App", () => {
 
   it("audits the home page", () => {
     cy.lighthouse({
-      performance: 80,
+      performance: 50,
       accessibility: 90,
       "best-practices": 50,
       seo: 50,
