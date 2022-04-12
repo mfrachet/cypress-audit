@@ -1,71 +1,6 @@
-# cy.lighthouse()
+# API
 
-- [Installation](#installation)
-  - [Installing the dependency](#installing-the-dependency)
-  - [Preparing the server configuration](#preparing-the-server-configuration)
-  - [Making Cypress aware of the commands](#making-cypress-aware-of-the-commands)
-- [API](#api)
-  - [Thresholds per tests](#thresholds-per-tests)
-  - [Globally set thresholds](#globally-set-thresholds)
-  - [Passing options and config to Lighthouse directly](#passing-options-and-config-to-lighthouse-directly)
-  - [Available metrics](#available-metrics)
-  - [Accessing the raw reports](#accessing-the-raw-reports)
-- [Good to know](#good-to-know)
-  - [Test with a production bundle](#test-with-a-production-bundle)
-  - [Lighthouse scores may be different between local run and cypress-audit](#lighthouse-scores-may-be-different-between-local-run-and-cypress-audit)
-  - [Session storage](#session-storage)
-
-## Installation
-
-In order to make the `cy.lighthouse()` command available in your project, **there are 3 steps to follow:**
-
-### Installing the dependency
-
-In your favorite terminal:
-
-```sh
-$ yarn add -D @cypress-audit/lighthouse
-# or
-$ npm install --save-dev @cypress-audit/lighthouse
-```
-
-### Preparing the server configuration
-
-By default, if you try to run Lighthouse from the command line (or from Nodejs), you will see that it opens a new web browser window by default. As you may also know, Cypress also opens a dedicated browser to run its tests.
-
-The following configuration allows Lighthouse and Cypress to make their verifications inside **the same browser (controlled by Cypress) instead of creating a new one**.
-
-In the `cypress/plugins/index.js` file, make sure to have:
-
-```javascript
-const { lighthouse, prepareAudit } = require("@cypress-audit/lighthouse");
-
-module.exports = (on, config) => {
-  on("before:browser:launch", (browser = {}, launchOptions) => {
-    prepareAudit(launchOptions);
-  });
-
-  on("task", {
-    lighthouse: lighthouse(), // calling the function is important
-  });
-};
-```
-
-### Making Cypress aware of the commands
-
-When adding the following line in the `cypress/support/commands.js` file, you will be able to use `cy.lighthouse` inside your Cypress tests:
-
-```javascript
-import "@cypress-audit/lighthouse/commands";
-```
-
-You can then call `cy.lighthouse()` in your Cypress tests.
-
-![A Lighthouse record showing some test failing on best-practices and performances](./docs/lh.png)
-
-## API
-
-### Thresholds per tests
+## Thresholds per tests
 
 If you don't provide any argument to the `cy.lighthouse` command, the test will fail if at least one of your metrics is under `100`.
 
@@ -98,7 +33,7 @@ it("should verify the lighthouse scores ONLY for performance and first contentfu
 
 This test will fail only when the `performance` metric provided by Lighthouse will be under `85`.
 
-### Globally set thresholds
+## Globally set thresholds
 
 While I would recommend to make per-test assumptions, it's possible to define general metrics inside the `cypress.json` file as following:
 
@@ -117,26 +52,6 @@ While I would recommend to make per-test assumptions, it's possible to define ge
 ```
 
 _Note: These metrics are override by the per-tests one._
-
-### Passing options and config to Lighthouse directly
-
-You can also pass any argument directly to the Lighthouse module using the second and third options of the command:
-
-```js
-const thresholds = {
-  /* ... */
-};
-
-const lighthouseOptions = {
-  /* ... your lighthouse options */
-};
-
-const lighthouseConfig = {
-  /* ... your lighthouse configs */
-};
-
-cy.lighthouse(thresholds, lighthouseOptions, lighthouseConfig);
-```
 
 ## Globally set options and configs
 
@@ -157,7 +72,27 @@ You can set default `lighthouseOptions` and `lighthouseConfig` to your `cypress.
 
 These values can be override at the test level.
 
-### Available metrics
+## Passing options and config to `cy.lighthouse` directly
+
+You can also pass any argument directly to the Lighthouse module using the second and third options of the command:
+
+```js
+const thresholds = {
+  /* ... */
+};
+
+const lighthouseOptions = {
+  /* ... your lighthouse options */
+};
+
+const lighthouseConfig = {
+  /* ... your lighthouse configs */
+};
+
+cy.lighthouse(thresholds, lighthouseOptions, lighthouseConfig);
+```
+
+## Available metrics
 
 With Lighthouse 6, we're now able to make assumptions on **categories** and **audits**.
 
@@ -190,7 +125,7 @@ The audits are things like the first meaningful paint and the score is provided 
 - total-byte-weight
 - dom-size
 
-### Accessing the raw reports
+## Accessing the raw reports
 
 When using custom tools, it can be convenient to directly access the raw information they provide for doing manual things, such as generating a custom reports.
 
@@ -214,7 +149,7 @@ module.exports = (on, config) => {
 };
 ```
 
-#### Generating HTML reports
+## Generating HTML reports
 
 In order to have lighthouse's HTML reports available in your filesystem, you'll need to first specify `html` as the ouput for your lighthouseConfig.
 
@@ -228,7 +163,7 @@ const lighthouseOptions = {
 };
 
 const lighthouseConfig = {
-  output: 'html' //If output is not specified, then the json report will be generated
+  output: "html", //If output is not specified, then the json report will be generated
   /* ... your lighthouse configs */
 };
 
@@ -239,7 +174,7 @@ Secondly, whilst reading the raw report use `fs` to write the HTML report to dis
 
 ```javascript
 const { lighthouse, prepareAudit } = require("@cypress-audit/lighthouse");
-const fs = require('fs');
+const fs = require("fs");
 
 module.exports = (on, config) => {
   on("before:browser:launch", (browser = {}, launchOptions) => {
@@ -248,17 +183,11 @@ module.exports = (on, config) => {
 
   on("task", {
     lighthouse: lighthouse((lighthouseReport) => {
-      console.log('---- Writing lighthouse report to disk ----');
+      console.log("---- Writing lighthouse report to disk ----");
 
-            fs.writeFile(
-                'lighthouse.html',
-                lighthouseReport.report,
-                (error: any) => {
-                    error
-                        ? console.log(error)
-                        : console.log('Report created successfully');
-                },
-            );
+      fs.writeFile("lighthouse.html", lighthouseReport.report, (error: any) => {
+        error ? console.log(error) : console.log("Report created successfully");
+      });
     }),
   });
 };
