@@ -1,7 +1,7 @@
 module.exports = {
   title: "cypress-audit Documentation",
   description: "Running audits directly in Cypress",
-  // base: "/cypress-audit/",
+  base: "/cypress-audit/",
   themeConfig: {
     search: false,
     sidebar: [
