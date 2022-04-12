@@ -28,7 +28,28 @@ module.exports = {
           },
           {
             title: "API",
-            path: "/guides/lighthouse/api",
+            children: [
+              {
+                title: "Available metrics",
+                path: "/guides/lighthouse/api-intro",
+              },
+              {
+                title: "Command",
+                path: "/guides/lighthouse/command-api",
+              },
+              {
+                title: "Global setting",
+                path: "/guides/lighthouse/global-api",
+              },
+              {
+                title: "Reports",
+                path: "/guides/lighthouse/reports",
+              },
+              {
+                title: "Good to know",
+                path: "/guides/lighthouse/good-to-know",
+              },
+            ],
           },
         ],
       },
