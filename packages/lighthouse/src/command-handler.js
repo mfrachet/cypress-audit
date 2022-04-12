@@ -49,7 +49,14 @@ const lighthouseCommandHandler = (thresholds, opts, config) => {
         opts: opts || globalOptions,
         config: config || globalConfig,
       })
-      .then(({ errors, results }) => {
+      .then((lighthouseResult) => {
+        if (!lighthouseResult) {
+          throw new Error(
+            "For an unexpected reason, lighthouse did not manage to run correctly. It might be related to lighthouse itself."
+          );
+        }
+
+        const { errors, results } = lighthouseResult;
         results.forEach((res) => {
           cy.log(res);
         });
