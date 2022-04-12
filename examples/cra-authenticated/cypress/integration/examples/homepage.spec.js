@@ -5,16 +5,25 @@ context("The App", () => {
     cy.visit("/");
   });
 
-  it("audits the home page", () => {
-    cy.lighthouse({
-      performance: 80,
-      accessibility: 90,
-      "best-practices": 50,
-      seo: 50,
-      pwa: 50,
+  it.only("audits the home page", () => {
+    Cypress.automation("remote:debugger:protocol", {
+      command: "Runtime.evaluate",
+      params: {
+        expression: "console.log('hello world 2');",
+      },
+    }).then((x) => {
+      cy.log("lol", x);
     });
 
-    cy.pa11y();
+    // cy.lighthouse({
+    //   performance: 80,
+    //   accessibility: 90,
+    //   "best-practices": 50,
+    //   seo: 50,
+    //   pwa: 50,
+    // });
+
+    // cy.pa11y();
   });
 
   it("audits the authenticated page", () => {
