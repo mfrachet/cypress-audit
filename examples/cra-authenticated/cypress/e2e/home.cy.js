@@ -1,6 +1,4 @@
-/// <reference types="cypress" />
-
-context("The App", () => {
+describe("The App", () => {
   beforeEach(() => {
     cy.visit("/");
   });

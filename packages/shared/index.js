@@ -7,7 +7,10 @@ const prepareAudit = (launchOptions) => {
     global.cypress_audit_port = remoteDebugging.split("=")[1];
   } else {
     console.error(
-      "[cypress-audit]: Woops, something went wrong when trying to get the browser port."
+      `[cypress-audit]: Woops, something went wrong when trying to get the browser port. Are sure you run your tests in a chromium based browser?
+      
+          npx cypress run --browser=chrome
+      `
     );
   }
 };
