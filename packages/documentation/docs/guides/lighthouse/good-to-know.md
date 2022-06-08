@@ -43,4 +43,4 @@ cy.lighthouse(customThresholds, desktopConfig);
 
 Session storage are supposed to keep data in the current browser tab. Since lighthouse will open a new tab, you won't be able to access the stored data during the audit.
 
-Hopefully, a community member has created an example on how to make session storage work on https://github.com/olyhaa-aetna/simple-auth-example
+Luckily a community member has created an example on how to make session storage work on [https://github.com/olyhaa-aetna/simple-auth-example](https://github.com/olyhaa-aetna/simple-auth-example)
