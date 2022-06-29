@@ -1,9 +1,10 @@
 import React from "react";
-import { navigate } from "@reach/router";
+import { useNavigate } from "react-router-dom";
 import { Layout } from "../components/Layout";
 
 export const Index = () => {
   const inputRef = React.useRef();
+  const navigate = useNavigate();
 
   const login = (e) => {
     e.preventDefault();

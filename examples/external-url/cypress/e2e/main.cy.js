@@ -6,7 +6,7 @@ describe("External", () => {
       accessibility: 50,
       "best-practices": 50,
       seo: 50,
-      pwa: 50,
+      pwa: 20,
     });
   });
 });
