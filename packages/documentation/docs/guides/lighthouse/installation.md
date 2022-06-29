@@ -12,11 +12,37 @@ $ yarn add -D @cypress-audit/lighthouse
 $ npm install --save-dev @cypress-audit/lighthouse
 ```
 
-## Preparing the server configuration
+## The server configuration
 
 By default, if you try to run Lighthouse from the command line (or from Nodejs), you will see that it opens a new web browser window by default. As you may also know, Cypress also opens a dedicated browser to run its tests.
 
 The following configuration allows Lighthouse and Cypress to make their verifications inside **the same browser (controlled by Cypress) instead of creating a new one**.
+
+### Cypress over v10
+
+In the `cypress.config.js` file, make sure to have:
+
+```javascript
+const { lighthouse, prepareAudit } = require("@cypress-audit/lighthouse");
+
+module.exports = {
+  e2e: {
+    baseUrl: "http://localhost:3000", // this is your app
+    setupNodeEvents(on, config) {
+      on("before:browser:launch", (browser = {}, launchOptions) => {
+        prepareAudit(launchOptions);
+      });
+
+      on("task", {
+        lighthouse: lighthouse(),
+        pa11y: pa11y(console.log.bind(console)),
+      });
+    },
+  },
+};
+```
+
+### Cypress prior to v10
 
 In the `cypress/plugins/index.js` file, make sure to have:
 
