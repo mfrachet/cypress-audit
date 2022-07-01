@@ -24,6 +24,7 @@ In the `cypress.config.js` file, make sure to have:
 
 ```javascript
 const { lighthouse, prepareAudit } = require("@cypress-audit/lighthouse");
+const { pa11y } = require("@cypress-audit/pa11y");
 
 module.exports = {
   e2e: {
