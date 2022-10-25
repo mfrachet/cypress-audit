@@ -8,7 +8,7 @@ Lighthouse is a tool that is supposed to run against a production bundle for com
 
 According to https://github.com/mfrachet/cypress-audit/issues/89, it's possible that cypress-audit provides different Lighthouse results comparing to a local run in a browser. **It's important to keep in mind that cypress-audit is just a wrapper around lighthouse.** It does not do anything special except calling the regular [Lighthouse](https://www.npmjs.com/package/lighthouse) module through Cypress commands.
 
-To fix this issue, and to get results closer to Lighthouse runs in the browser, you may want to rely on [Lighthouse defaults](https://github.com/GoogleChrome/lighthouse/blob/master/lighthouse-core/config/constants.js) configurations and pass them to cypress-audit.
+To fix this issue, and to get results closer to Lighthouse runs in the browser, you may want to rely on [Lighthouse defaults](https://github.com/GoogleChrome/lighthouse/blob/main/core/config/constants.js) configurations and pass them to cypress-audit.
 
 For instance @maciejtrzcinski in the previous issue suggests to rely on the following configuration in order to have result closer to the run in the browser:
 
