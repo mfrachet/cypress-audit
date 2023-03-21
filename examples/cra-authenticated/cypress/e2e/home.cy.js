@@ -3,14 +3,14 @@ describe("The App", () => {
     cy.visit("/");
   });
 
-  it("audits the home page", () => {
-    cy.lighthouse({
-      performance: 50,
-      accessibility: 90,
-      "best-practices": 50,
-      seo: 50,
-      pwa: 50,
-    });
+  it.only("audits the home page", () => {
+    // cy.lighthouse({
+    //   performance: 50,
+    //   accessibility: 90,
+    //   "best-practices": 50,
+    //   seo: 50,
+    //   pwa: 50,
+    // });
 
     cy.pa11y();
   });

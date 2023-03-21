@@ -1,4 +1,3 @@
-const lighthouseLib = require("lighthouse");
 const {
   computeCategories,
   computeAudits,
@@ -19,18 +18,20 @@ const lighthouse =
         opts.disableStorageReset = true;
       }
 
-      return lighthouseLib(url, opts, config).then((results) => {
-        if (callback) {
-          callback(results);
-        }
+      return import("lighthouse")
+        .then((lighthouseLib) => lighthouseLib.default(url, opts, config))
+        .then((results) => {
+          if (callback) {
+            callback(results);
+          }
 
-        const computedAudits = computeAudits(results.lhr.audits);
-        const computedCategories = computeCategories(results.lhr.categories);
+          const computedAudits = computeAudits(results.lhr.audits);
+          const computedCategories = computeCategories(results.lhr.categories);
 
-        const allMetrics = { ...computedAudits, ...computedCategories };
+          const allMetrics = { ...computedAudits, ...computedCategories };
 
-        return compareWithThresholds(allMetrics, thresholds);
-      });
+          return compareWithThresholds(allMetrics, thresholds);
+        });
     }
 
     throw new Error(
