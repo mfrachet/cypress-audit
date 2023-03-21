@@ -1,6 +1,8 @@
 describe("External", () => {
   it("check scores", () => {
-    cy.visit("https://google.com/");
+    // Google may throw 429 errors if this test runs too often
+    // We only care about if lighthouse works on external urls
+    cy.visit("https://google.com/", { failOnStatusCode: false });
 
     cy.lighthouse({
       accessibility: 50,
