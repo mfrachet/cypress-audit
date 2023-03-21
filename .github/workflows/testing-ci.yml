@@ -18,9 +18,6 @@ jobs:
 
       - name: Install dependencies
         run: npm i && npm run bootstrap
-
-      - name: Lint
-        run: npm run lint
   cra:
     runs-on: ${{ matrix.os }}
     strategy:

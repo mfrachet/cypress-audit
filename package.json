@@ -11,15 +11,11 @@
   "license": "MIT",
   "scripts": {
     "test": "lerna run test",
-    "lint": "lerna run lint",
     "bootstrap": "lerna bootstrap",
     "release": "lerna publish"
   },
   "devDependencies": {
     "cypress": "^10.11.0",
-    "eslint": "^8.13.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.5.1",
     "lerna": "^4.0.0",
     "prettier": "^2.6.2"
