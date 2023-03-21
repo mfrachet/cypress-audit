@@ -6,7 +6,7 @@ module.exports = {
   e2e: {
     baseUrl: "http://localhost:2000",
     setupNodeEvents(on, config) {
-      on("before:browser:launch", (browser = {}, launchOptions) => {
+      on("before:browser:launch", (browser, launchOptions) => {
         prepareAudit(launchOptions);
       });
 
