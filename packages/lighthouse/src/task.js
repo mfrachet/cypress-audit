@@ -1,4 +1,4 @@
-const lighthouseLib = require("lighthouse/core/index.cjs");
+const lighthouseLib = require("lighthouse/core/index.cjs").legacyNavigation;
 const {
   computeCategories,
   computeAudits,
