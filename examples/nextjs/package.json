@@ -1,9 +1,7 @@
 {
   "name": "nextjs",
-  "version": "1.4.0",
-  "main": "index.js",
-  "private": "true",
-  "license": "MIT",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "dev": "next dev -p 2000",
     "build": "next build",
@@ -12,13 +10,13 @@
     "e2e:audit:headless": "cypress run --headless --browser chrome"
   },
   "dependencies": {
-    "next": "^10.0.3",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "next": "13.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@cypress-audit/lighthouse": "^1.4.0",
-    "@cypress-audit/pa11y": "^1.4.0",
+    "@cypress-audit/lighthouse": "workspace:*",
+    "@cypress-audit/pa11y": "workspace:*",
     "cypress": "^10.3.0"
   }
 }

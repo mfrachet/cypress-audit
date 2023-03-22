@@ -215,17 +215,17 @@ describe("pa11y command", () => {
               code: "first",
               message: "Something wrong occured",
               context: "Additional context found",
-            }
+            },
           ])
         ),
         log: jest.fn(),
       };
 
-      let consoleSpy = jest.spyOn(cy, 'log').mockImplementation()
-      await pa11yCommandHandler({ threshold: 2 })
-      expect(consoleSpy).toHaveBeenCalledTimes(1)
+      let consoleSpy = jest.spyOn(cy, "log").mockImplementation();
+      await pa11yCommandHandler({ threshold: 2 });
+      expect(consoleSpy).toHaveBeenCalledTimes(1);
       // TODO: Fix expected message string
       // expect(consoleSpy).toHaveBeenCalledWith('cy.pa11y - 1 accessibility violation was found\n\nIssue: first, # of occurrences: 1.\n  - Something wrong occured\n  - Context: Additional context found          \n\n');
-    })
+    });
   });
 });

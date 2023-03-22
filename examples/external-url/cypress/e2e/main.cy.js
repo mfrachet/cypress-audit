@@ -1,6 +1,6 @@
 describe("External", () => {
   it("check scores", () => {
-    cy.visit("https://google.com/");
+    cy.visit("https://example.com/");
 
     cy.lighthouse({
       accessibility: 50,

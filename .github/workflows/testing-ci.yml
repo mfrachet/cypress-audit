@@ -16,11 +16,13 @@ jobs:
         with:
           node-version: "16"
 
+      - uses: ./.github/actions/pnpm
+
       - name: Install dependencies
-        run: npm i && npm run bootstrap
+        run: pnpm i
 
       - name: Lint
-        run: npm run lint
+        run: pnpm run lint
   cra:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -32,17 +34,19 @@ jobs:
         with:
           node-version: "16"
 
+      - uses: ./.github/actions/pnpm
+
       - name: Install dependencies
-        run: npm i && npm run bootstrap
+        run: pnpm i
 
       - name: Running CRA test
         run: |
-          npm i -g serve
+          pnpm i -g serve
           cd ./examples/cra-authenticated
-          npm i
-          npm run build
+          npx cypress install --force
+          pnpm run build
           serve -s build -l 3000 &
-          npm run e2e:audit:headless
+          pnpm run e2e:audit:headless
   nextjs:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -54,16 +58,18 @@ jobs:
         with:
           node-version: "16"
 
+      - uses: ./.github/actions/pnpm
+
       - name: Install dependencies
-        run: npm i && npm run bootstrap
+        run: pnpm i
 
       - name: Running Nextjs test
         run: |
           cd examples/nextjs
-          npm install
-          npm run build 
-          npm start &
-          npm run e2e:audit:headless
+          npx cypress install --force
+          pnpm run build 
+          pnpm start &
+          pnpm run e2e:audit:headless
   external:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -75,11 +81,13 @@ jobs:
         with:
           node-version: "16"
 
+      - uses: ./.github/actions/pnpm
+
       - name: Install dependencies
-        run: npm i && npm run bootstrap
+        run: pnpm i
 
       - name: Running External test
         run: |
           cd examples/external-url
-          npm install
-          npm run e2e:audit:headless
+          npx cypress install --force
+          pnpm run e2e:audit:headless
