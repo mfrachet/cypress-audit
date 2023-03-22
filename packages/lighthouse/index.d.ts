@@ -27,7 +27,7 @@ declare global {
       "total-byte-weight"?: number;
       "dom-size"?: number;
     }
-    
+
     interface Chainable<Subject> {
       /**
        * Runs a lighthouse audit
@@ -40,4 +40,3 @@ declare global {
 }
 
 export declare function lighthouse(): Cypress.Task;
-export { prepareAudit } from '@cypress-audit/shared';

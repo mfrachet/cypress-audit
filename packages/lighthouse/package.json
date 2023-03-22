@@ -10,7 +10,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@cypress-audit/shared": "workspace:*",
     "lighthouse": "^10.0.2"
   },
   "scripts": {
