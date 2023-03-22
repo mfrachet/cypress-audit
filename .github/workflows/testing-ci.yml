@@ -16,25 +16,7 @@ jobs:
         with:
           node-version: "16"
 
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+      - uses: ./.github/actions/pnpm
 
       - name: Install dependencies
         run: pnpm i
@@ -61,6 +43,7 @@ jobs:
         run: |
           pnpm i -g serve
           cd ./examples/cra-authenticated
+          npx cypress install --force
           pnpm run build
           serve -s build -l 3000 &
           pnpm run e2e:audit:headless
@@ -83,6 +66,7 @@ jobs:
       - name: Running Nextjs test
         run: |
           cd examples/nextjs
+          npx cypress install --force
           pnpm run build 
           pnpm start &
           pnpm run e2e:audit:headless
@@ -105,4 +89,5 @@ jobs:
       - name: Running External test
         run: |
           cd examples/external-url
+          npx cypress install --force
           pnpm run e2e:audit:headless
