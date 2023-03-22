@@ -30,4 +30,5 @@ runs:
           ${{ runner.os }}-pnpm-store-
 
     - name: Install Cypress
+      shell: bash
       run: npx cypress install
