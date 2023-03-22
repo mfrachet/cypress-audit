@@ -1,6 +1,6 @@
 {
   "name": "external-url",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "main": "index.js",
   "private": "true",
   "license": "MIT",

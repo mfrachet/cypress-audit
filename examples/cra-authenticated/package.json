@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
