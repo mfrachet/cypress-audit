@@ -9,7 +9,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@cypress-audit/shared": "workspace:*",
     "pa11y": "^6.2.3"
   },
   "scripts": {

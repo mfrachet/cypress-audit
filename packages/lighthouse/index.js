@@ -1,4 +1,4 @@
-const { prepareAudit } = require("@cypress-audit/shared");
+const { prepareAudit } = require("./src/prepare-audit");
 const { lighthouse } = require("./src/task");
 
 module.exports = { lighthouse, prepareAudit };

@@ -8,9 +8,9 @@ const prepareAudit = (launchOptions) => {
   } else {
     console.error(
       `[cypress-audit]: Woops, something went wrong when trying to get the browser port. Are sure you run your tests in a chromium based browser?
-      
-          npx cypress run --browser=chrome
-      `
+		
+			npx cypress run --browser=chrome
+		`
     );
   }
 };
