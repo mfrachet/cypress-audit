@@ -10,8 +10,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "lerna run test",
-    "lint": "lerna run lint",
+    "test": "pnpm run --recursive test",
+    "lint": "pnpm run --recursive lint",
     "release": "lerna publish"
   },
   "devDependencies": {

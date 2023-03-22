@@ -78,7 +78,7 @@ const pa11yCommandHandler = (opts) => {
 
         const formattedIssues = formatIssues(groupedIssues);
 
-        if(opts && opts.threshold && issues.length < opts.threshold) {
+        if (opts && opts.threshold && issues.length < opts.threshold) {
           cy.log(`${title}\n\n${formattedIssues}`);
         } else {
           throw new Error(`${title}\n\n${formattedIssues}`);
