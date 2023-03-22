@@ -40,3 +40,6 @@ declare global {
 }
 
 export declare function lighthouse(): Cypress.Task;
+export declare function prepareAudit(
+  launchOptions: Cypress.BrowserLaunchOptions
+): void;
