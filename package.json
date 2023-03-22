@@ -12,7 +12,6 @@
   "scripts": {
     "test": "lerna run test",
     "lint": "lerna run lint",
-    "bootstrap": "lerna bootstrap",
     "release": "lerna publish"
   },
   "devDependencies": {

@@ -16,11 +16,31 @@ jobs:
         with:
           node-version: "16"
 
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
       - name: Install dependencies
-        run: npm i && npm run bootstrap
+        run: pnpm i
 
       - name: Lint
-        run: npm run lint
+        run: pnpm run lint
   cra:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -32,17 +52,36 @@ jobs:
         with:
           node-version: "16"
 
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
       - name: Install dependencies
-        run: npm i && npm run bootstrap
+        run: pnpm i
 
       - name: Running CRA test
         run: |
-          npm i -g serve
+          pnpm i -g serve
           cd ./examples/cra-authenticated
-          npm i
-          npm run build
+          pnpm run build
           serve -s build -l 3000 &
-          npm run e2e:audit:headless
+          pnpm run e2e:audit:headless
   nextjs:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -54,16 +93,35 @@ jobs:
         with:
           node-version: "16"
 
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
       - name: Install dependencies
-        run: npm i && npm run bootstrap
+        run: pnpm i
 
       - name: Running Nextjs test
         run: |
           cd examples/nextjs
-          npm install
-          npm run build 
-          npm start &
-          npm run e2e:audit:headless
+          pnpm run build 
+          pnpm start &
+          pnpm run e2e:audit:headless
   external:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -76,10 +134,9 @@ jobs:
           node-version: "16"
 
       - name: Install dependencies
-        run: npm i && npm run bootstrap
+        run: pnpm i
 
       - name: Running External test
         run: |
           cd examples/external-url
-          npm install
-          npm run e2e:audit:headless
+          pnpm run e2e:audit:headless

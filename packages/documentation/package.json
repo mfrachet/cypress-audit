@@ -7,7 +7,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "predeploy": "npm run docs:build",
+    "predeploy": "pnpm run docs:build",
     "deploy": "gh-pages -d ./docs/.vuepress/dist"
   },
   "keywords": [],

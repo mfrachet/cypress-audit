@@ -17,8 +17,8 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@cypress-audit/lighthouse": "^1.4.0",
-    "@cypress-audit/pa11y": "^1.4.0",
+    "@cypress-audit/lighthouse": "workspace:*",
+    "@cypress-audit/pa11y": "workspace:*",
     "cypress": "^10.3.0"
   }
 }
