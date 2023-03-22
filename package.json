@@ -12,15 +12,13 @@
   "scripts": {
     "test": "pnpm run --recursive test",
     "lint": "pnpm run --recursive lint",
-    "release": "lerna publish"
+    "release": "lerna version"
   },
   "devDependencies": {
-    "cypress": "^10.11.0",
-    "eslint": "^8.13.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^27.5.1",
-    "lerna": "^4.0.0",
-    "prettier": "^2.6.2"
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "lerna": "^6.5.1",
+    "prettier": "^2.8.6"
   }
 }
