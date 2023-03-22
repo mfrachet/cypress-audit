@@ -6,7 +6,6 @@
     "dev": "next dev -p 2000",
     "build": "next build",
     "start": "next start -p 2000",
-    "lint": "next lint",
     "e2e:audit": "cypress open",
     "e2e:audit:headless": "cypress run --headless --browser chrome"
   },
