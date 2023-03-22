@@ -1,5 +1,5 @@
-const { lighthouse, prepareAudit } = require("../../packages/lighthouse");
-const { pa11y } = require("../../packages/pa11y");
+const { lighthouse, prepareAudit } = require("@cypress-audit/lighthouse");
+const { pa11y } = require("@cypress-audit/pa11y");
 
 module.exports = {
   video: false,
