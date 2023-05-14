@@ -38,8 +38,9 @@ const lighthouseOptions = {
 };
 
 const lighthouseConfig = {
-  output: "html", //If output is not specified, then the json report will be generated
-  /* ... your lighthouse configs */
+  settings: { output: "html" },
+  extends: "lighthouse:default",
+  /* ... Alternatively, you could set your own lighthouse config */
 };
 
 cy.lighthouse(thresholds, lighthouseOptions, lighthouseConfig);
