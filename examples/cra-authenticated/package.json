@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@cypress-audit/lighthouse": "workspace:*",
-    "@cypress-audit/pa11y": "workspace:*",
+    "@cypress-audit/kayle": "workspace:*",
     "concurrently": "^7.2.2",
     "cypress": "^10.2.0",
     "serve": "^13.0.2"

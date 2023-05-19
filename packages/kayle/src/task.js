@@ -1,14 +1,14 @@
-const pa11yLib = require("pa11y");
+const kayleLib = require("kayle");
 const puppeteer = require("puppeteer");
 
-const pa11y =
+const kayle =
   (callback) =>
   async ({ url, opts }) => {
     const browser = await puppeteer.connect({
       browserURL: `http://localhost:${global.cypress_audit_port}`,
     });
 
-    const results = await pa11yLib(url, { browser, runners: ["axe"], ...opts });
+    const results = await kayleLib({ browser, runners: ["axe"], ...opts, origin: url, page: opts.page || await browser.newPage() });
 
     if (callback) {
       callback(results);
@@ -17,4 +17,4 @@ const pa11y =
     return results.issues || [];
   };
 
-module.exports = { pa11y };
+module.exports = { kayle };

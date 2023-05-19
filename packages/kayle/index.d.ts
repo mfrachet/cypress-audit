@@ -28,10 +28,10 @@ declare namespace Cypress {
 
   interface Chainable<Subject> {
     /**
-     * Runs a pa11y audit
+     * Runs a kayle audit
      * @example
-     * cy.pa11y(opts)
+     * cy.kayle(opts)
      */
-    pa11y(opts?: Options);
+    kayle(opts?: Options);
   }
 }

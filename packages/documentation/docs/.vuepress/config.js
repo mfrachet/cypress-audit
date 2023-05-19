@@ -54,15 +54,15 @@ module.exports = {
         ],
       },
       {
-        title: "Pa11y",
+        title: "Kayle",
         children: [
           {
             title: "Installation",
-            path: "/guides/pa11y/installation",
+            path: "/guides/kayle/installation",
           },
           {
             title: "API",
-            path: "/guides/pa11y/api",
+            path: "/guides/kayle/api",
           },
         ],
       },

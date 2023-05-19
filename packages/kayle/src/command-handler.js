@@ -56,25 +56,25 @@ const formatIssues = (issues) => {
     .join(`\n\n`);
 };
 
-const pa11yCommandHandler = (opts) => {
+const kayleCommandHandler = (opts) => {
   if (!VALID_BROWSERS[Cypress.browser.displayName]) {
     return cy.log(
-      "cy.pa11y()",
+      "cy.kayle()",
       `${Cypress.browser.displayName} is not supported. Skipping...`
     );
   }
 
   return cy
     .url()
-    .then((url) => cy.task("pa11y", { url, opts }))
+    .then((url) => cy.task("kayle", { url, opts }))
     .then((issues) => {
       if (issues.length > 0) {
         const groupedIssues = groupIssues(issues);
 
         const title =
           issues.length === 1
-            ? `cy.pa11y - ${issues.length} accessibility violation was found`
-            : `cy.pa11y - ${issues.length} accessibility violations were found`;
+            ? `cy.kayle - ${issues.length} accessibility violation was found`
+            : `cy.kayle - ${issues.length} accessibility violations were found`;
 
         const formattedIssues = formatIssues(groupedIssues);
 
@@ -87,4 +87,4 @@ const pa11yCommandHandler = (opts) => {
     });
 };
 
-module.exports = pa11yCommandHandler;
+module.exports = kayleCommandHandler;
