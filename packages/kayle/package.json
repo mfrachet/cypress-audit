@@ -1,5 +1,5 @@
 {
-  "name": "@cypress-audit/pa11y",
+  "name": "@cypress-audit/kayle",
   "version": "1.4.2",
   "main": "index.js",
   "author": "Marvin FRACHET <marvin.frachet@gmail.com> (https://github.com/mfrachet)",
@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "pa11y": "^6.2.3"
+    "kayle": "0.4.37"
   },
   "scripts": {
     "test": "jest",

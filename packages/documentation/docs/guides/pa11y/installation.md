@@ -1,15 +1,15 @@
 # Installation
 
-:warning: In order to make the `cy.pa11y()` command available in your project, **there are 3 steps to follow:**
+:warning: In order to make the `cy.kayle()` command available in your project, **there are 3 steps to follow:**
 
 ## Installing the dependency
 
 In your favorite terminal:
 
 ```sh
-$ yarn add -D @cypress-audit/pa11y
+$ yarn add -D @cypress-audit/kayle
 # or
-$ npm install --save-dev @cypress-audit/pa11y
+$ npm install --save-dev @cypress-audit/kayle
 ```
 
 ## The server configuration
@@ -23,7 +23,7 @@ The following configuration allows Lighthouse and Cypress to make their verifica
 In the `cypress.config.js` file, make sure to have:
 
 ```javascript
-const { pa11y, prepareAudit } = require("@cypress-audit/pa11y");
+const { kayle, prepareAudit } = require("@cypress-audit/kayle");
 
 module.exports = {
   e2e: {
@@ -34,7 +34,7 @@ module.exports = {
       });
 
       on("task", {
-        pa11y: pa11y(),
+        kayle: kayle(),
       });
     },
   },
@@ -46,7 +46,7 @@ module.exports = {
 In the `cypress/plugins/index.js` file, make sure to have:
 
 ```javascript
-const { pa11y, prepareAudit } = require("@cypress-audit/pa11y");
+const { kayle, prepareAudit } = require("@cypress-audit/kayle");
 
 module.exports = (on, config) => {
   on("before:browser:launch", (browser = {}, launchOptions) => {
@@ -54,19 +54,19 @@ module.exports = (on, config) => {
   });
 
   on("task", {
-    pa11y: pa11y(), // calling the function is important
+    kayle: kayle(), // calling the function is important
   });
 };
 ```
 
 ## Making Cypress aware of the commands
 
-When adding the following line in the `cypress/support/commands.js` file, you will be able to use `cy.pa11y` inside your Cypress tests:
+When adding the following line in the `cypress/support/commands.js` file, you will be able to use `cy.kayle` inside your Cypress tests:
 
 ```javascript
-import "@cypress-audit/pa11y/commands";
+import "@cypress-audit/kayle/commands";
 ```
 
-You can call `cy.pa11y(opts)` with `opts` being any kind of [the pa11y options](https://github.com/pa11y/pa11y#configuration).
+You can call `cy.kayle(opts)` with `opts` being any kind of [the kayle options](https://github.com/kayle/kayle#configuration).
 
-![A Pa11y record showing some test failing on color contrast, landmark, heading and regions.](./pally.png)
+![A Kayle record showing some test failing on color contrast, landmark, heading and regions.](./pally.png)

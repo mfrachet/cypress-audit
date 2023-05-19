@@ -1,6 +1,6 @@
-const pa11yCommandHandler = require("../command-handler");
+const kayleCommandHandler = require("../command-handler");
 
-describe("pa11y command", () => {
+describe("kayle command", () => {
   beforeEach(() => {
     global.Cypress = {
       browser: {
@@ -28,7 +28,7 @@ describe("pa11y command", () => {
           log: jest.fn(),
         };
 
-        await pa11yCommandHandler({ a: "bcd" });
+        await kayleCommandHandler({ a: "bcd" });
         expect(global.cy.log).not.toBeCalled();
       });
     });
@@ -46,10 +46,10 @@ describe("pa11y command", () => {
         log: jest.fn(),
       };
 
-      await pa11yCommandHandler({ a: "bcd" });
+      await kayleCommandHandler({ a: "bcd" });
 
       expect(global.cy.log).toBeCalledWith(
-        "cy.pa11y()",
+        "cy.kayle()",
         "Edge is not supported. Skipping..."
       );
     });
@@ -79,10 +79,10 @@ describe("pa11y command", () => {
       };
 
       try {
-        await pa11yCommandHandler({ a: "bcd" });
+        await kayleCommandHandler({ a: "bcd" });
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(`
-          "cy.pa11y - 1 accessibility violation was found
+          "cy.kayle - 1 accessibility violation was found
 
           Issue: first, # of occurrences: 1.
             - Something wrong occured
@@ -128,10 +128,10 @@ describe("pa11y command", () => {
       };
 
       try {
-        await pa11yCommandHandler({ a: "bcd" });
+        await kayleCommandHandler({ a: "bcd" });
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(`
-          "cy.pa11y - 3 accessibility violations were found
+          "cy.kayle - 3 accessibility violations were found
 
           Issue: first, # of occurrences: 1.
             - Something wrong occured
@@ -180,10 +180,10 @@ describe("pa11y command", () => {
       };
 
       try {
-        await pa11yCommandHandler({ a: "bcd" });
+        await kayleCommandHandler({ a: "bcd" });
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(`
-          "cy.pa11y - 3 accessibility violations were found
+          "cy.kayle - 3 accessibility violations were found
 
           Issue: first, # of occurrences: 1.
             - Something wrong occured
@@ -222,10 +222,10 @@ describe("pa11y command", () => {
       };
 
       let consoleSpy = jest.spyOn(cy, "log").mockImplementation();
-      await pa11yCommandHandler({ threshold: 2 });
+      await kayleCommandHandler({ threshold: 2 });
       expect(consoleSpy).toHaveBeenCalledTimes(1);
       // TODO: Fix expected message string
-      // expect(consoleSpy).toHaveBeenCalledWith('cy.pa11y - 1 accessibility violation was found\n\nIssue: first, # of occurrences: 1.\n  - Something wrong occured\n  - Context: Additional context found          \n\n');
+      // expect(consoleSpy).toHaveBeenCalledWith('cy.kayle - 1 accessibility violation was found\n\nIssue: first, # of occurrences: 1.\n  - Something wrong occured\n  - Context: Additional context found          \n\n');
     });
   });
 });

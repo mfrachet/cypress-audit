@@ -24,7 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import "@cypress-audit/lighthouse/commands";
-import "@cypress-audit/pa11y/commands";
+import "@cypress-audit/kayle/commands";
 
 Cypress.Commands.add("login", () => {
   window.localStorage.setItem("username", "mfrachet");
