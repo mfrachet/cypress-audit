@@ -14,7 +14,7 @@ $ yarn # or `npm install`
 
 ```shell
 $ yarn build
-$ yarn serve -l 3000
+$ yarn serve build -s -l 3000
 ```
 
 - Run the tests (in another terminal)
