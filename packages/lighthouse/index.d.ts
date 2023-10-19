@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import type * as LH from "lighthouse/core";
+
 declare global {
   namespace Cypress {
     interface LighthouseThresholds {
@@ -28,18 +30,29 @@ declare global {
       "dom-size"?: number;
     }
 
+    type LighthouseFlags = LH.Flags;
+
+    type LighthouseConfig = LH.Config;
+
     interface Chainable<Subject> {
       /**
        * Runs a lighthouse audit
        * @example
        * cy.lighthouse(thresholds,opts,config)
        */
-      lighthouse(thresholds?: LighthouseThresholds, opts?: any, config?: any);
+      lighthouse(
+        thresholds?: LighthouseThresholds,
+        opts?: LighthouseFlags,
+        config?: LighthouseConfig
+      );
     }
   }
 }
 
-export declare function lighthouse(): Cypress.Task;
+export declare function lighthouse(
+  callback?: (results: LH.RunnerResult) => void
+): Cypress.Task;
+
 export declare function prepareAudit(
   launchOptions: Cypress.BrowserLaunchOptions
 ): void;
